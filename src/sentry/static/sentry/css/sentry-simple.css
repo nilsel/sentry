@@ -5754,7 +5754,7 @@ header {
   background: #465262;
   color: #fff;
   padding: 26px 0;
-  margin: 0 0 20px;
+  margin: 0 0 22px;
 }
 header a {
   color: #fff;
@@ -6178,4 +6178,10 @@ header .project-dropdown .icon-arrow-down {
 }
 #explore .breadcrumb li {
   font-size: 18px;
+}
+.chart {
+  background: #f4f5f5;
+  height: 140px;
+  margin: 0 0 30px;
+  border-radius: 7px;
 }
