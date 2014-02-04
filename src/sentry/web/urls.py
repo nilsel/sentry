@@ -188,6 +188,8 @@ urlpatterns += patterns('',
     # Generic
     url(r'^$', generic.dashboard,
         name='sentry'),
+    url(r'ember/^$', generic.index,
+        name='sentry-index'),
 
     # Admin
     url(r'^manage/status/$', admin.status_env,

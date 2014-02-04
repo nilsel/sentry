@@ -18,4 +18,5 @@ pip-log.txt
 /docs/doctrees
 example/db.sqlite
 /src/sentry/static/CACHE/
+/src/sentry/static/sentry/vendor/
 /wheelhouse

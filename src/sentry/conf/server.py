@@ -348,6 +348,19 @@ NPM_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, os.pardir, os.pardir, 'nod
 
 SENTRY_STATIC_BUNDLES = {
     "packages": {
+        # new, ember.js
+        "sentry/app/app.min.js": {
+            "src": [
+                "sentry/app/app.js",
+            ],
+        },
+        "sentry/scripts/vendor.min.js": {
+            "src": [
+                "sentry/vendor/jquery/jquery.js",
+            ],
+        },
+
+        # old
         "sentry/scripts/global.min.js": {
             "src": [
                 "sentry/scripts/core.js",
@@ -417,10 +430,13 @@ SENTRY_STATIC_BUNDLES = {
         },
     },
     "postcompilers": {
-        "*.js": ["node_modules/uglify-js/bin/uglifyjs {input} --source-map-root={relroot}/ --source-map-url={name}.map{ext} --source-map={relpath}/{name}.map{ext} -o {output}"],
+        "*.js": [
+            "node_modules/.bin/compile-modules {input} --to {output}"
+            "node_modules/.bin/uglifyjs {input} --source-map-root={relroot}/ --source-map-url={name}.map{ext} --source-map={relpath}/{name}.map{ext} -o {output}"
+        ],
     },
     "preprocessors": {
-        "*.less": ["node_modules/less/bin/lessc {input} {output}"],
+        "*.less": ["node_modules/.bin/lessc {input} {output}"],
     },
 }
 

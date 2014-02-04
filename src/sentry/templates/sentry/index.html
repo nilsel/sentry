@@ -1,0 +1,57 @@
+{% load i18n %}
+{% load sentry_helpers %}
+{% load static_compiler %}
+{% get_sentry_version %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% block title %}Sentry{% endblock %}</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="{% url 'sentry-media' "sentry" "images/favicon.ico" %}" rel="shortcut icon" type="image/png"/>
+
+  {% staticbundle 'sentry/styles/global.min.css' %}
+
+  {% staticbundle 'sentry/scripts/vendor.min.js' %}
+  {% staticbundle 'sentry/scripts/bootstrap.min.js' %}
+  {% staticbundle 'sentry/scripts/app.min.js' %}
+
+  <script type="text/javascript">
+  {% if request.LANGUAGE_CODE %}
+      moment.lang('{{ request.LANGUAGE_CODE }}');
+  {% endif %}
+  app.config.popupCss = '{% url 'sentry-media' "sentry" 'styles/popup.css' %}';
+  app.config.mediaUrl = '{% url 'sentry-media' "sentry" '' %}';
+  app.config.urlPrefix = {{ URL_PREFIX|to_json|safe }};
+  {% if project %}
+      app.config.projectId = {{ project.slug|to_json|safe }};
+      app.config.teamId = {{ project.team.slug|to_json|safe }};
+  {% elif team %}
+      app.config.projectId = null;
+      app.config.teamId = {{ team.slug|to_json|safe }};
+  {% else %}
+      app.config.projectId = null;
+      app.config.teamId = null;
+  {% endif %}
+  </script>
+
+</head>
+<body>
+  <!--[if lt IE 8]>
+    <p class="browsehappy">
+      You are using an <strong>outdated</strong> browser. Please
+      <a href="http://browsehappy.com/">upgrade your browser</a>
+      to improve your experience.
+    </p>
+  <![endif]-->
+
+  <script>
+    window.App = require('appkit/app')["default"].create();
+  </script>
+
+</body>
+</html>
