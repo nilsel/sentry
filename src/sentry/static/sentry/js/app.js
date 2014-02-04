@@ -42,3 +42,10 @@ App.TeamProjectController = Ember.Controller.extend({
 App.TeamProjectGroupController = Ember.Controller.extend({
   
 });
+
+$(function() {
+  $('.frame').click(function(e){
+    $(this).toggleClass('expanded');
+    e.preventDefault;
+  });
+});

@@ -880,10 +880,10 @@
                             <a href="#" class="box-toggle"></a>
                             <h4>Exception</h4>
                         </div>
-                        <div class="box-content with-padding">
+                        <div class="box-content">
                             <div class="frame">
                                 <div class="frame-heading">
-                                <a href="#" class="context-toggle">Hide context</a>
+                                <a class="context-toggle">Hide context</a>
                                 <strong>django/core/handlers/base.py:77</strong> in <code>wrapped_view</code></div>
                                 <div class="context">
                                     <pre class="prettyprint linenums:73">
@@ -893,8 +893,140 @@
 def wrapped_view(*args, **kwargs):
     return view_func(*args, **kwargs)
 wrapped_view.csrf_exempt = True
-return wraps(view_func, assigned=available_attrs(view_func))(wrapped_view)
-                                    </pre>
+return wraps(view_func, assigned=available_attrs(view_func))(wrapped_view)</pre>
+                                <div class="stack">
+                                    <table class="table">
+                                        <tr>
+                                            <th>callback</th>
+                                            <td class="values">
+                                            <pre>&lt;function <span></span>search_tag<span></span>s at 0x4d9<span></span>4140&gt;</pre>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>callback_args</th>
+                                            <td class="values">
+                                                <table class="table table-striped vars">
+                                                    <colgroup>
+                                                        <col style="width:100px;">
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                Index
+                                                            </th>
+                                                            <th>Value</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>callback_kwargs</th>
+                                            <td class="values">
+                                            <table class="table vars">
+                                                <colgroup>
+                                                    <col style="width:100px;">
+                                                </colgroup>
+                                                
+                                                <tbody>
+                                                    
+                                                        <tr>
+                                                            <th>'project_id'</th>
+                                                            <td class="values">
+                                                                
+
+
+
+                                            
+                                                <pre>u'quizup-p<span></span>roduction'</pre>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>'team_slug'</th>
+                                                            <td class="values">
+                                                                <pre>u'quizup'</pre>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <div class="frame-heading">
+                                <a class="context-toggle">Hide context</a>
+                                <strong>django/core/handlers/base.py:77</strong> in <code>wrapped_view</code></div>
+                                <div class="context">
+                                    <pre class="prettyprint linenums:73">
+# We could just do view_func.csrf_exempt = True, but decorators
+# are nicer if they don't have side-effects, so we return a new
+# function.
+def wrapped_view(*args, **kwargs):
+    return view_func(*args, **kwargs)
+wrapped_view.csrf_exempt = True
+return wraps(view_func, assigned=available_attrs(view_func))(wrapped_view)</pre>
+                                <div class="stack">
+                                    <table class="table">
+                                        <tr>
+                                            <th>callback</th>
+                                            <td class="values">
+                                            <pre>&lt;function <span></span>search_tag<span></span>s at 0x4d9<span></span>4140&gt;</pre>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>callback_args</th>
+                                            <td class="values">
+                                                <table class="table table-striped vars">
+                                                    <colgroup>
+                                                        <col style="width:100px;">
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                Index
+                                                            </th>
+                                                            <th>Value</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>callback_kwargs</th>
+                                            <td class="values">
+                                            <table class="table vars">
+                                                <colgroup>
+                                                    <col style="width:100px;">
+                                                </colgroup>
+                                                
+                                                <tbody>
+                                                    
+                                                        <tr>
+                                                            <th>'project_id'</th>
+                                                            <td class="values">
+                                                                
+
+
+
+                                            
+                                                <pre>u'quizup-p<span></span>roduction'</pre>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>'team_slug'</th>
+                                                            <td class="values">
+                                                                <pre>u'quizup'</pre>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
                                 </div>
                             </div>
                         </div>

@@ -6092,6 +6092,16 @@ header .project-dropdown .icon-arrow-down {
 .table-borderless tbody tr td {
   border: 0;
 }
+.table .table {
+  margin: -8px 0 -8px -8px;
+}
+.table .table td,
+.table .table th {
+  border: none;
+}
+.table th {
+  font-weight: 600;
+}
 .tags {
   padding-left: 0;
   list-style: none;
@@ -6112,6 +6122,29 @@ header .project-dropdown .icon-arrow-down {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.frame {
+  padding: 14px 14px 6px;
+  border-bottom: 2px solid #f8f8f9;
+}
+.frame:last-child {
+  border-bottom: 0;
+}
+.frame .prettyprint ol li:not(.L6),
+.frame .stack {
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  visibility: hidden;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  position: absolute;
+}
+.frame.expanded .prettyprint ol li,
+.frame.expanded .stack {
+  visibility: visible;
+  opacity: 100;
+  filter: alpha(opacity=10000);
+  position: static;
+}
 .frame .context-toggle {
   float: right;
 }
@@ -6123,6 +6156,13 @@ header .project-dropdown .icon-arrow-down {
 }
 .frame pre .L6 {
   background: #f8f8f8;
+}
+.frame .stack pre {
+  padding: 0;
+  margin: 0;
+}
+.frame .stack > .table {
+  margin-bottom: 0;
 }
 #explore h2 {
   margin: 0 0 10px;
