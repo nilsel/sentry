@@ -16,27 +16,27 @@
 
   {% staticbundle 'sentry/styles/global.min.css' %}
 
-  {% staticbundle 'sentry/scripts/vendor.min.js' %}
-  {% staticbundle 'sentry/scripts/bootstrap.min.js' %}
-  {% staticbundle 'sentry/scripts/app.min.js' %}
+  {% staticbundle 'sentry/loader.min.js' %}
+  {% staticbundle 'sentry/vendor.min.js' %}
+  {% staticbundle 'sentry/app/app.min.js' %}
 
   <script type="text/javascript">
-  {% if request.LANGUAGE_CODE %}
-      moment.lang('{{ request.LANGUAGE_CODE }}');
-  {% endif %}
-  app.config.popupCss = '{% url 'sentry-media' "sentry" 'styles/popup.css' %}';
-  app.config.mediaUrl = '{% url 'sentry-media' "sentry" '' %}';
-  app.config.urlPrefix = {{ URL_PREFIX|to_json|safe }};
-  {% if project %}
-      app.config.projectId = {{ project.slug|to_json|safe }};
-      app.config.teamId = {{ project.team.slug|to_json|safe }};
-  {% elif team %}
-      app.config.projectId = null;
-      app.config.teamId = {{ team.slug|to_json|safe }};
-  {% else %}
-      app.config.projectId = null;
-      app.config.teamId = null;
-  {% endif %}
+  // {% if request.LANGUAGE_CODE %}
+  //     moment.lang('{{ request.LANGUAGE_CODE }}');
+  // {% endif %}
+  // app.config.popupCss = '{% url 'sentry-media' "sentry" 'styles/popup.css' %}';
+  // app.config.mediaUrl = '{% url 'sentry-media' "sentry" '' %}';
+  // app.config.urlPrefix = {{ URL_PREFIX|to_json|safe }};
+  // {% if project %}
+  //     app.config.projectId = {{ project.slug|to_json|safe }};
+  //     app.config.teamId = {{ project.team.slug|to_json|safe }};
+  // {% elif team %}
+  //     app.config.projectId = null;
+  //     app.config.teamId = {{ team.slug|to_json|safe }};
+  // {% else %}
+  //     app.config.projectId = null;
+  //     app.config.teamId = null;
+  // {% endif %}
   </script>
 
 </head>
@@ -50,7 +50,7 @@
   <![endif]-->
 
   <script>
-    window.App = require('appkit/app')["default"].create();
+    window.App = require('app')["default"].create();
   </script>
 
 </body>
