@@ -430,8 +430,11 @@ SENTRY_STATIC_BUNDLES = {
         },
     },
     "postcompilers": {
-        "*.js": [
-            "node_modules/.bin/compile-modules {input} --to {output}"
+        # TODO: really this should be a preprocessor
+        "*/app/*.js": [
+            "./compile-es6.js {input} {output}",
+        ],
+        "scripts/*.js": [
             "node_modules/.bin/uglifyjs {input} --source-map-root={relroot}/ --source-map-url={name}.map{ext} --source-map={relpath}/{name}.map{ext} -o {output}"
         ],
     },
