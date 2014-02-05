@@ -1,11 +1,15 @@
 define([
+    "models/group",
     "routes/index",
     "views/application",
     "views/project_stream",
     "views/team_group",
     "router"
-], function(IndexRoute, ApplicationView, TeamProjectIndexView, TeamProjectGroupView, Router){
+], function(GroupModel, IndexRoute, ApplicationView, TeamProjectIndexView, TeamProjectGroupView, Router){
     var App = {
+        // Models
+        GroupModel: GroupModel,
+
         // Routes
         IndexRoute: IndexRoute,
 

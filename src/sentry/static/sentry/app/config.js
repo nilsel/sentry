@@ -1,9 +1,13 @@
 define({
     app_name: "Sentry",
     shim : {
-        'ember' : {
+        'ember': {
             deps: ['handlebars', 'jquery'],
             exports: 'Ember'
+        },
+        'ember-data': {
+            deps: ['ember'],
+            exports: 'DS'
         }
     },
     paths : {
@@ -16,6 +20,7 @@ define({
         'jquery': '../vendor/jquery/jquery',
         'handlebars': '../vendor/handlebars/handlebars',
         'ember': '../vendor/ember/ember',
+        'ember-data': '../vendor/ember-data/ember-data',
         /*requirejs-plugins*/
         'text': '../vendor/requirejs-plugins/lib/text',
         'hbs': '../vendor/requirejs-plugins/lib/hbs',
