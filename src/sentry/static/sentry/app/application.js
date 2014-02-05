@@ -1,22 +1,26 @@
 define([
-  	"views/application",
+    "routes/index",
+    "views/application",
+    "views/project_stream",
     "views/team_group",
-  	"controllers/application",
-    "controllers/team_project",
-  	"router"
-], function(ApplicationView, TeamProjectGroupView, ApplicationController, TeamProjectGroupController, TeamProjectController, Router){
-  	var App = {
+    "router"
+], function(IndexRoute, ApplicationView, TeamProjectIndexView, TeamProjectGroupView, Router){
+    var App = {
+        // Routes
+        IndexRoute: IndexRoute,
+
         // Views
-      	ApplicationView: ApplicationView,
+        ApplicationView: ApplicationView,
+        TeamProjectIndexView: TeamProjectIndexView,
         TeamProjectGroupView: TeamProjectGroupView,
 
         // Controllers
-      	ApplicationController: ApplicationController,
-        TeamProjectController: TeamProjectController,
+        // ApplicationController: ApplicationController,
+       //  TeamProjectController: TeamProjectController,
 
         // Etc
-      	Router: Router
-  	};
+        Router: Router
+    };
 
-  	return App;
+    return App;
 });
