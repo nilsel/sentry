@@ -168,9 +168,9 @@ STATIC_ROOT = os.path.realpath(os.path.join(PROJECT_ROOT, 'static'))
 STATIC_URL = '/_static/'
 
 STATICFILES_FINDERS = (
-    "static_compiler.finders.StaticCompilerWithCacheFinder",
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "static_compiler.finders.StaticCompilerFinder",
 )
 
 LOCALE_PATHS = (
@@ -365,54 +365,49 @@ def gulp(root, pattern='*', exclude=[]):
 SENTRY_STATIC_BUNDLES = {
     "packages": {
         # new, ember.js
-        "sentry/app/app.min.js": {
-            # TODO: support ** in static-compiler
-            "cwd": "sentry/app",
-            "src": gulp('sentry/app/', '*.js', exclude=['*.min.js']),
-            "postcompilers": {
-                "*.js": [
-                    "cat {input} > {output}",
-                ],
-            },
-            "preprocessors": {
-                "*.js": [
-                    "node_modules/.bin/compile-modules {input} --to compiled",
-                    "cp -v compiled/{input} {output}",
-                ],
-            },
-        },
-        "sentry/app/templates.min.js": {
-            # TODO: support ** in static-compiler
-            "cwd": "sentry/app/templates",
-            "src": dict(
-                (k, k[:-4] + '.js')
-                for k in gulp('sentry/app/templates/', '*.hbs'),
-            ),
-            "postcompilers": {
-                "*.js": [
-                    "cat {input} > {output}.tmp",
-                    "script/bundle-hbs-template {input}.tmp > {output} && rm {input}.tmp",
-                ],
-            },
-            "preprocessors": {
-                "*.hbs": [
-                    "script/compile-hbs-template {input} > {output}",
-                    # "cp -v compiled/{input} {output}",
-                ],
-            },
-        },
-        "sentry/loader.min.js": {
-            "src": [
-                "sentry/loader.js",
-            ],
-        },
-        "sentry/vendor.min.js": {
-            "src": [
-                "sentry/vendor/jquery/jquery.js",
-                "sentry/vendor/handlebars/handlebars.js",
-                "sentry/vendor/ember/ember.js",
-            ],
-        },
+        # "sentry/app/app.min.js": {
+        #     # TODO: support ** in static-compiler
+        #     "cwd": "sentry/app",
+        #     "src": gulp('sentry/app/', '*.js', exclude=['*.min.js']),
+        #     "postcompilers": {
+        #         "*.js": [
+        #             "cat {input} > {output}",
+        #         ],
+        #     },
+        #     "preprocessors": {
+        #         "*.js": [
+        #             "node_modules/.bin/compile-modules {input} --to compiled",
+        #             "cp -v compiled/{input} {output}",
+        #         ],
+        #     },
+        # },
+        # "sentry/app/templates.min.js": {
+        #     # TODO: support ** in static-compiler
+        #     "cwd": "sentry/app/templates",
+        #     "src": dict(
+        #         (k, k[:-4] + '.js')
+        #         for k in gulp('sentry/app/templates/', '*.hbs'),
+        #     ),
+        #     "postcompilers": {
+        #         "*.js": [
+        #             "cat {input} > {output}.tmp",
+        #             "script/bundle-hbs-template {input}.tmp > {output} && rm {input}.tmp",
+        #         ],
+        #     },
+        #     "preprocessors": {
+        #         "*.hbs": [
+        #             "script/compile-hbs-template {input} > {output}",
+        #             # "cp -v compiled/{input} {output}",
+        #         ],
+        #     },
+        # },
+        # "sentry/vendor.min.js": {
+        #     "src": [
+        #         "sentry/vendor/jquery/jquery.js",
+        #         "sentry/vendor/handlebars/handlebars.js",
+        #         "sentry/vendor/ember/ember.js",
+        #     ],
+        # },
 
         # old
         "sentry/scripts/global.min.js": {

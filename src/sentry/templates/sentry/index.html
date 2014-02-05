@@ -6,44 +6,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{% block title %}Sentry{% endblock %}</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <link href="{% url 'sentry-media' "sentry" "images/favicon.ico" %}" rel="shortcut icon" type="image/png"/>
+    <title>{% block title %}Sentry{% endblock %}</title>
 
-  <link rel="stylesheet" href="{% url 'sentry-media' 'sentry' 'css/sentry-simple.css' %}">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {% staticbundle 'sentry/loader.min.js' %}
-  {% staticbundle 'sentry/vendor.min.js' %}
-  {% staticbundle 'sentry/app/app.min.js' %}
-  {% staticbundle 'sentry/app/templates.min.js' %}
+    <link href="{% url 'sentry-media' "sentry" "images/favicon.ico" %}" rel="shortcut icon" type="image/png"/>
 
-  <script type="text/javascript">
-  // {% if request.LANGUAGE_CODE %}
-  //     moment.lang('{{ request.LANGUAGE_CODE }}');
-  // {% endif %}
-  // app.config.popupCss = '{% url 'sentry-media' "sentry" 'styles/popup.css' %}';
-  // app.config.mediaUrl = '{% url 'sentry-media' "sentry" '' %}';
-  // app.config.urlPrefix = {{ URL_PREFIX|to_json|safe }};
-  // {% if project %}
-  //     app.config.projectId = {{ project.slug|to_json|safe }};
-  //     app.config.teamId = {{ project.team.slug|to_json|safe }};
-  // {% elif team %}
-  //     app.config.projectId = null;
-  //     app.config.teamId = {{ team.slug|to_json|safe }};
-  // {% else %}
-  //     app.config.projectId = null;
-  //     app.config.teamId = null;
-  // {% endif %}
-  </script>
+    <link rel="stylesheet" href="{% url 'sentry-media' 'sentry' 'css/sentry-simple.css' %}">
+
+    <script data-main="{% url 'sentry-media' 'sentry' 'app/main' %}"
+            src="{% url 'sentry-media' 'sentry' 'vendor/requirejs/require.js' %}"></script>
 
 </head>
 <body>
-  <script>
-    window.App = require('app')["default"].create();
-  </script>
 </body>
 </html>
