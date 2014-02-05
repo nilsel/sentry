@@ -1,0 +1,378 @@
+{{#link-to 'team.project'}}<span class="icon-arrow-left back-button"></span>{{/link-to}}
+<ul class="events">
+    <li class="event">
+        <div class="pull-right">
+            <div class="btn-group">
+              <!-- <button type="button" class="btn btn-sm btn-default btn-white">Resolved</button> -->
+              <button type="button" class="btn btn-sm btn-default btn-white dropdown-toggle" data-toggle="dropdown">
+                <span class="icon-arrow-down"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Bookmark</a></li>
+                <li><a href="#">Create GitHub issue</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Remove from Sentry</a></li>
+              </ul>
+            </div>
+        </div>
+        <div class="count">209</div>
+        <div class="details">
+            <h3>{{#link-to 'team.project.group' }}sentry.tasks.email in process_inbound_email{{/link-to}}</h3>
+            <p class="message">Inbound email from unknown address: kunal.kukreja@joshworkz.com</p>
+            <div class="meta">
+                <time>3 days ago</time>
+                <a href="note-count">3 notes</a>
+            </div>
+        </div>
+    </li>
+</ul>
+<div class="pull-right">
+    <div class="btn-group">
+    <a class="btn btn-sm btn-default"><span class="icon-arrow-left"></span> Older</a>
+    <a class="btn btn-sm btn-default disabled" style="background: #fff">ID: ff0d71...</a>
+    <a class="btn btn-sm btn-default">Newer <span class="icon-arrow-right"></span></a>
+    </div>
+</div>
+<ul class="nav nav-tabs project-nav" style="margin-top: -8px">
+    <li class="active"><a href="#">Summary</a></li>
+    <li class=""><a href="#">Discussion</a></li>
+</ul>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="chart"></div>
+        <div class="box">
+            <div class="box-header">
+                <h4>Timeline</h4>
+            </div>
+            <div class="box-content">
+                <ul class="timeline">
+                    <li class="timeline-item console">
+                        <div class="row">
+                            <div class="col-sm-7 description">
+                                <h5>Console</h5>
+                                <p><strong>Severity</strong> info</p>
+                                <p><strong>Message</strong> initialize page layout</p>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="graph">
+                                    <div class="scale">
+                                        <div class="scale-line scale-line-0">
+                                            <span class="scale-label">0s</span>
+                                        </div>
+                                        <div class="scale-line scale-line-25">
+                                            <span class="scale-label">30s</span>
+                                        </div>
+                                        <div class="scale-line scale-line-50">
+                                            <span class="scale-label">60s</span>
+                                        </div>
+                                        <div class="scale-line scale-line-75">
+                                            <span class="scale-label">90s</span>
+                                        </div>
+                                    </div>
+                                    <div class="blip-container" style="margin-left: 10%;">
+                                        <div class="blip"></div>
+                                        <div class="blip-label">10s</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-item user-action">
+                        <div class="row">
+                            <div class="col-sm-7 description">
+                                <h5>User click</h5>
+                                <p><strong>element</strong> <code>button.sup</code></p>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="graph">
+                                    <div class="scale">
+                                        <div class="scale-line scale-line-0">
+                                            <span class="scale-label"></span>
+                                        </div>
+                                        <div class="scale-line scale-line-25">
+                                            <span class="scale-label"></span>
+                                        </div>
+                                        <div class="scale-line scale-line-50">
+                                            <span class="scale-label"></span>
+                                        </div>
+                                        <div class="scale-line scale-line-75">
+                                            <span class="scale-label"></span>
+                                        </div>
+                                    </div>
+                                    <div class="blip-container" style="margin-left: 25%">
+                                        <div class="blip"></div>
+                                        <div class="blip-label">30s</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-item ajax">
+                        <div class="row">
+                            <div class="col-sm-7 description">
+                                <h5>Ajax GET</h5>
+                                <p><strong>element</strong> <code>button.sup</code></p>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="graph">
+                                    <div class="scale">
+                                        <div class="scale-line scale-line-0">
+                                            <span class="scale-label"></span>
+                                        </div>
+                                        <div class="scale-line scale-line-25">
+                                            <span class="scale-label"></span>
+                                        </div>
+                                        <div class="scale-line scale-line-50">
+                                            <span class="scale-label"></span>
+                                        </div>
+                                        <div class="scale-line scale-line-75">
+                                            <span class="scale-label"></span>
+                                        </div>
+                                    </div>
+                                    <div class="blip-container" style="margin-left: 60%">
+                                        <div class="blip"></div>
+                                        <div class="blip-label">72s</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="context hide">
+
+                                <pre>
+App.ApplicationRoute = Ember.Route.extend({
+actions: {
+openModal: function(modalName) {
+return this.render(modalName, {
+into: 'application',
+outlet: 'modal'
+});
+}
+}
+});
+                                </pre>
+
+                        </div>
+                    </li>
+                    <li class="timeline-item error">
+                        <div class="row">
+                            <div class="col-sm-7 description">
+                                <h5>Error</h5>
+                                <p><strong>element</strong> <code>button.sup</code></p>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="graph">
+                                    <div class="scale">
+                                        <div class="scale-line scale-line-0">
+                                            <span class="scale-label"></span>
+                                        </div>
+                                        <div class="scale-line scale-line-25">
+                                            <span class="scale-label"></span>
+                                        </div>
+                                        <div class="scale-line scale-line-50">
+                                            <span class="scale-label"></span>
+                                        </div>
+                                        <div class="scale-line scale-line-75">
+                                            <span class="scale-label"></span>
+                                        </div>
+                                    </div>
+                                    <div class="blip-container" style="margin-left: 90%;">
+                                        <div class="blip"></div>
+                                        <div class="blip-label">110s</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-header">
+                <a href="#" class="box-toggle"></a>
+                <h4>Tags</h4>
+            </div>
+            <div class="box-content with-padding">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <ul class="tags">
+                            <li><strong>level</strong> <a href="#">Error</a></li>
+                            <li><strong>url</strong> <a href="#">https://app.getsentry.com/api/quizup/quizup-production/tags/search/?query=users-dev&quietMillis=300&name=url&limit=10</a></li>
+                            <li><strong>server_name</strong> <a href="#">web-2</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="tags">
+                            <li><strong>logger</strong> <a href="#">root</a></li>
+                            <li><strong>browser</strong> <a href="#">Chrome 32.0.1700.102</a></li>
+                            <li><strong>os</strong> <a href="#">MacOs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box" id="exception">
+            <div class="box-header">
+                <a href="#" class="box-toggle"></a>
+                <h4>Exception</h4>
+            </div>
+            <div class="box-content">
+                <div class="frame">
+                    <div class="frame-heading">
+                    <a class="context-toggle">Hide context</a>
+                    <strong>django/core/handlers/base.py:77</strong> in <code>wrapped_view</code></div>
+                    <div class="context">
+                        <pre class="prettyprint linenums:73">
+# We could just do view_func.csrf_exempt = True, but decorators
+# are nicer if they don't have side-effects, so we return a new
+# function.
+def wrapped_view(*args, **kwargs):
+return view_func(*args, **kwargs)
+wrapped_view.csrf_exempt = True
+return wraps(view_func, assigned=available_attrs(view_func))(wrapped_view)</pre>
+                    <div class="stack">
+                        <table class="table">
+                            <tr>
+                                <th>callback</th>
+                                <td class="values">
+                                <pre>&lt;function <span></span>search_tag<span></span>s at 0x4d9<span></span>4140&gt;</pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>callback_args</th>
+                                <td class="values">
+                                    <table class="table table-striped vars">
+                                        <colgroup>
+                                            <col style="width:100px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Index
+                                                </th>
+                                                <th>Value</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>callback_kwargs</th>
+                                <td class="values">
+                                <table class="table vars">
+                                    <colgroup>
+                                        <col style="width:100px;">
+                                    </colgroup>
+
+                                    <tbody>
+
+                                            <tr>
+                                                <th>'project_id'</th>
+                                                <td class="values">
+
+
+
+
+
+                                    <pre>u'quizup-p<span></span>roduction'</pre>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>'team_slug'</th>
+                                                <td class="values">
+                                                    <pre>u'quizup'</pre>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+                <div class="frame">
+                    <div class="frame-heading">
+                    <a class="context-toggle">Hide context</a>
+                    <strong>django/core/handlers/base.py:77</strong> in <code>wrapped_view</code></div>
+                    <div class="context">
+                        <pre class="prettyprint linenums:73">
+# We could just do view_func.csrf_exempt = True, but decorators
+# are nicer if they don't have side-effects, so we return a new
+# function.
+def wrapped_view(*args, **kwargs):
+return view_func(*args, **kwargs)
+wrapped_view.csrf_exempt = True
+return wraps(view_func, assigned=available_attrs(view_func))(wrapped_view)</pre>
+                    <div class="stack">
+                        <table class="table">
+                            <tr>
+                                <th>callback</th>
+                                <td class="values">
+                                <pre>&lt;function <span></span>search_tag<span></span>s at 0x4d9<span></span>4140&gt;</pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>callback_args</th>
+                                <td class="values">
+                                    <table class="table table-striped vars">
+                                        <colgroup>
+                                            <col style="width:100px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Index
+                                                </th>
+                                                <th>Value</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>callback_kwargs</th>
+                                <td class="values">
+                                <table class="table vars">
+                                    <colgroup>
+                                        <col style="width:100px;">
+                                    </colgroup>
+
+                                    <tbody>
+
+                                            <tr>
+                                                <th>'project_id'</th>
+                                                <td class="values">
+
+
+
+
+
+                                    <pre>u'quizup-p<span></span>roduction'</pre>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>'team_slug'</th>
+                                                <td class="values">
+                                                    <pre>u'quizup'</pre>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#">Event overview</a></li>
+            <li><a href="#">Tags</a></li>
+            <li><a href="#">Similar events</a></li>
+        </ul>
+    </div>
+</div>

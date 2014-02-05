@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+import json
+import sys
+
+inpath = sys.argv[1]
+
+with open(inpath) as fp:
+    template_name = inpath.rsplit('.', 1)[0].lstrip('/')
+    sys.stdout.write('Ember.TEMPLATES[%s] = Ember.Handlebars.compile(%s);\n' % (
+        json.dumps(template_name),
+        json.dumps(fp.read())
+    ))

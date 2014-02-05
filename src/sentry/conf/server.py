@@ -381,6 +381,26 @@ SENTRY_STATIC_BUNDLES = {
                 ],
             },
         },
+        "sentry/app/templates.min.js": {
+            # TODO: support ** in static-compiler
+            "cwd": "sentry/app/templates",
+            "src": dict(
+                (k, k[:-4] + '.js')
+                for k in gulp('sentry/app/templates/', '*.hbs'),
+            ),
+            "postcompilers": {
+                "*.js": [
+                    "cat {input} > {output}.tmp",
+                    "script/bundle-hbs-template {input}.tmp > {output} && rm {input}.tmp",
+                ],
+            },
+            "preprocessors": {
+                "*.hbs": [
+                    "script/compile-hbs-template {input} > {output}",
+                    # "cp -v compiled/{input} {output}",
+                ],
+            },
+        },
         "sentry/loader.min.js": {
             "src": [
                 "sentry/loader.js",
