@@ -13,7 +13,10 @@ from django.contrib import messages
 from django.contrib.auth.models import AnonymousUser
 from django.core.urlresolvers import reverse
 from django.db.models import Sum, Q
-from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
+from django.http import (
+    HttpResponse, HttpResponseBadRequest,
+    HttpResponseForbidden, HttpResponseRedirect,
+)
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 from django.views.decorators.cache import never_cache, cache_control
@@ -31,10 +34,11 @@ from sentry.coreapi import (
     project_from_auth_vars, decode_and_decompress_data,
     safely_load_json_string, validate_data, insert_data_to_database, APIError,
     APIForbidden, APIRateLimited, extract_auth_vars, ensure_has_ip)
-from sentry.exceptions import InvalidData
+from sentry.exceptions import InvalidData, InvalidOrigin, InvalidRequest
 from sentry.models import (
     Group, GroupBookmark, Project, ProjectCountByMinute, TagValue, Activity,
     User)
+from sentry.signals import event_received
 from sentry.plugins import plugins
 from sentry.utils import json
 from sentry.utils.cache import cache
@@ -125,6 +129,8 @@ class APIView(BaseView):
             origin = self.get_request_origin(request)
 
             response = self._dispatch(request, project_id=project_id, *args, **kwargs)
+        except InvalidRequest as e:
+            response = HttpResponseBadRequest(str(e), content_type='text/plain')
         except Exception:
             response = HttpResponse(status=500)
 
@@ -168,18 +174,19 @@ class APIView(BaseView):
 
         try:
             project = self._get_project_from_id(project_id)
-        except APIError, e:
-            return HttpResponse(str(e), content_type='text/plain', status=400)
+        except APIError as e:
+            raise InvalidRequest(str(e))
 
         if project:
             Raven.tags_context({'project': project.id})
 
         origin = self.get_request_origin(request)
         if origin is not None:
+            # This check is specific for clients who need CORS support
             if not project:
-                return HttpResponse('Your client must be upgraded for CORS support.')
-            elif not is_valid_origin(origin, project):
-                return HttpResponse('Invalid origin: %r' % origin, content_type='text/plain', status=400)
+                raise InvalidRequest('Your client must be upgraded for CORS support.')
+            if not is_valid_origin(origin, project):
+                raise InvalidOrigin(origin)
 
         # XXX: It seems that the OPTIONS call does not always include custom headers
         if request.method == 'OPTIONS':
@@ -187,12 +194,12 @@ class APIView(BaseView):
         else:
             try:
                 auth_vars = self._parse_header(request, project)
-            except APIError, e:
-                return HttpResponse(str(e), content_type='text/plain', status=400)
+            except APIError as e:
+                raise InvalidRequest(str(e))
 
             try:
                 project_, user = project_from_auth_vars(auth_vars)
-            except APIError, error:
+            except APIError as error:
                 return HttpResponse(unicode(error.msg), status=error.http_status)
             else:
                 if user:
@@ -201,26 +208,33 @@ class APIView(BaseView):
             # Legacy API was /api/store/ and the project ID was only available elsewhere
             if not project:
                 if not project_:
-                    return HttpResponse('Unable to identify project', content_type='text/plain', status=400)
+                    raise InvalidRequest('Unable to identify project')
                 project = project_
             elif project_ != project:
-                return HttpResponse('Project ID mismatch', content_type='text/plain', status=400)
+                raise InvalidRequest('Project ID mismatch')
             else:
                 Raven.tags_context({'project': project.id})
 
             auth = Auth(auth_vars, is_public=bool(origin))
 
             if auth.version >= 3:
-                if request.method == 'GET' and origin is None:
-                    return HttpResponse('Missing required Origin or Referer header', status=400)
-                # Version 3 enforces secret key for server side requests
-                if not auth.secret_key:
-                    return HttpResponse('Missing required attribute in authentication header: sentry_secret', status=400)
+                if request.method == 'GET':
+                    # GET only requires an Origin/Referer check
+                    # If an Origin isn't passed, it's possible that the project allows no origin,
+                    # so we need to explicitly check for that here. If Origin is not None,
+                    # it can be safely assumed that it was checked previously and it's ok.
+                    if origin is None and not is_valid_origin(origin, project):
+                        # Special case an error message for a None origin when None wasn't allowed
+                        raise InvalidRequest('Missing required Origin or Referer header')
+                else:
+                    # Version 3 enforces secret key for server side requests
+                    if not auth.secret_key:
+                        raise InvalidRequest('Missing required attribute in authentication header: sentry_secret')
 
             try:
                 response = super(APIView, self).dispatch(request, project=project, auth=auth, **kwargs)
 
-            except APIError, error:
+            except APIError as error:
                 response = HttpResponse(unicode(error.msg), content_type='text/plain', status=error.http_status)
 
         if origin:
@@ -288,6 +302,8 @@ class StoreView(APIView):
         return response
 
     def process(self, request, project, auth, data, **kwargs):
+        event_received.send(ip=request.META['REMOTE_ADDR'], sender=type(self))
+
         if safe_execute(app.quotas.is_rate_limited, project=project):
             raise APIRateLimited
         for plugin in plugins.all():
@@ -305,7 +321,7 @@ class StoreView(APIView):
         try:
             # mutates data
             validate_data(project, data, auth.client)
-        except InvalidData, e:
+        except InvalidData as e:
             raise APIError(u'Invalid data: %s (%s)' % (unicode(e), type(e)))
 
         # mutates data
@@ -554,9 +570,12 @@ def clear(request, team, project):
 
     # TODO: should we record some kind of global event in Activity?
     event_list = response['event_list']
-    happened = event_list.update(status=STATUS_RESOLVED)
+    rows_affected = event_list.update(status=STATUS_RESOLVED)
+    if rows_affected > 1000:
+        logger.warning(
+            'Large resolve on %s of %s rows', project.slug, rows_affected)
 
-    if happened:
+    if rows_affected:
         Activity.objects.create(
             project=project,
             type=Activity.SET_RESOLVED,

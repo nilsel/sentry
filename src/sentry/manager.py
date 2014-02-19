@@ -212,13 +212,18 @@ class GroupManager(BaseManager, ChartMixin):
     def normalize_event_data(self, data):
         # TODO(dcramer): store http.env.REMOTE_ADDR as user.ip
         # First we pull out our top-level (non-data attr) kwargs
-        if not data.get('level') or data['level'] not in LOG_LEVELS:
+        if not isinstance(data.get('level'), (basestring, int)):
+            data['level'] = logging.ERROR
+        elif data['level'] not in LOG_LEVELS:
             data['level'] = logging.ERROR
 
         if not data.get('logger'):
             data['logger'] = DEFAULT_LOGGER_NAME
         else:
             data['logger'] = trim(data['logger'], 64)
+
+        if data.get('platform'):
+            data['platform'] = trim(data['platform'], 64)
 
         timestamp = data.get('timestamp')
         if not timestamp:
@@ -266,6 +271,7 @@ class GroupManager(BaseManager, ChartMixin):
         trim_dict(
             data['extra'], max_size=settings.SENTRY_MAX_EXTRA_VARIABLE_SIZE)
 
+        # TODO: each interface should describe its own normalization logic
         if 'sentry.interfaces.Exception' in data:
             if 'values' not in data['sentry.interfaces.Exception']:
                 data['sentry.interfaces.Exception'] = {
@@ -281,17 +287,24 @@ class GroupManager(BaseManager, ChartMixin):
                     value = exc_data.get(key)
                     if value:
                         exc_data[key] = trim(value)
+
                 if exc_data.get('stacktrace'):
                     trim_frames(exc_data['stacktrace'])
                     for frame in exc_data['stacktrace']['frames']:
                         stack_vars = frame.get('vars', {})
                         trim_dict(stack_vars)
+                        for key, value in frame.iteritems():
+                            if key not in ('vars', 'data'):
+                                frame[key] = trim(value)
 
         if 'sentry.interfaces.Stacktrace' in data:
             trim_frames(data['sentry.interfaces.Stacktrace'])
             for frame in data['sentry.interfaces.Stacktrace']['frames']:
                 stack_vars = frame.get('vars', {})
                 trim_dict(stack_vars)
+                for key, value in frame.iteritems():
+                    if key not in ('vars', 'data'):
+                        frame[key] = trim(value)
 
         if 'sentry.interfaces.Message' in data:
             msg_data = data['sentry.interfaces.Message']
@@ -425,7 +438,7 @@ class GroupManager(BaseManager, ChartMixin):
             # TODO: should we mail admins when there are failures?
             try:
                 logger.exception(u'Unable to process log entry: %s', exc)
-            except Exception, exc:
+            except Exception as exc:
                 warnings.warn(u'Unable to process log entry: %s', exc)
             return
 
@@ -570,7 +583,7 @@ class GroupManager(BaseManager, ChartMixin):
 
         try:
             self.add_tags(group, tags)
-        except Exception, e:
+        except Exception as e:
             logger.exception('Unable to record tags: %s' % (e,))
 
         return group, is_new, is_sample

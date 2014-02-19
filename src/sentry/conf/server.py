@@ -19,6 +19,9 @@ import urlparse
 
 from datetime import timedelta
 
+
+socket.setdefaulttimeout(5)
+
 DEBUG = False
 TEMPLATE_DEBUG = True
 
@@ -112,8 +115,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'sentry.middleware.SentryMiddleware',
-    'sentry.middleware.SentrySocialAuthExceptionMiddleware',
+    'sentry.middleware.locale.SentryLocaleMiddleware',
+    'sentry.middleware.social_auth.SentrySocialAuthExceptionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
@@ -498,6 +501,7 @@ REST_FRAMEWORK = {
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
 }
 
+STATSD_CLIENT = 'django_statsd.clients.null'
 
 # Sentry and Raven configuration
 
@@ -632,7 +636,7 @@ SENTRY_SEARCH_OPTIONS = {}
 SENTRY_USE_SEARCH = True
 # SENTRY_INDEX_SEARCH = SENTRY_USE_SEARCH
 
-SENTRY_RAVEN_JS_URL = 'cdn.ravenjs.com/1.1.7/jquery,native/raven.min.js'
+SENTRY_RAVEN_JS_URL = 'cdn.ravenjs.com/1.1.11/jquery,native/raven.min.js'
 
 # URI Prefixes for generating DSN URLs
 # (Defaults to URL_PREFIX by default)

@@ -108,7 +108,7 @@ class Activity(Model):
 
         disabled = set(UserOption.objects.filter(
             user__in=user_id_list,
-            key='subscribe_comments',
+            key='subscribe_notes',
             value='0',
         ).values_list('user', flat=True))
 
@@ -150,6 +150,6 @@ class Activity(Model):
 
         try:
             msg.send()
-        except Exception, e:
+        except Exception as e:
             logger = logging.getLogger('sentry.mail.errors')
             logger.exception(e)

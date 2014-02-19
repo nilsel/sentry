@@ -131,6 +131,7 @@ class NotificationSettingsForm(forms.Form):
 
 class AccountSettingsForm(forms.Form):
     old_password = forms.CharField(label=_('Current password'), widget=forms.PasswordInput)
+    username = forms.CharField(label=_('Username'), max_length=128)
     email = forms.EmailField(label=_('Email'))
     first_name = forms.CharField(required=True, label=_('Name'), max_length=30)
     new_password = forms.CharField(label=_('New password'), widget=forms.PasswordInput, required=False)
@@ -139,9 +140,19 @@ class AccountSettingsForm(forms.Form):
         self.user = user
         super(AccountSettingsForm, self).__init__(*args, **kwargs)
 
+        # dont show username field if its the same as their email address
+        if self.user.email == self.user.username:
+            del self.fields['username']
+
         # HACK: don't require current password if they don't have one
         if self.user.password in EMPTY_PASSWORD_VALUES:
             del self.fields['old_password']
+
+    def clean_username(self):
+        value = self.cleaned_data['username']
+        if User.objects.filter(username__iexact=value).exclude(id=self.user.id).exists():
+            raise forms.ValidationError(_("That username is already in use."))
+        return value
 
     def clean_old_password(self):
         """
@@ -156,7 +167,19 @@ class AccountSettingsForm(forms.Form):
         if self.cleaned_data.get('new_password'):
             self.user.set_password(self.cleaned_data['new_password'])
         self.user.first_name = self.cleaned_data['first_name']
+
+        if self.cleaned_data['email'] != self.user.email:
+            new_username = self.user.email == self.user.username
+        else:
+            new_username = False
+
         self.user.email = self.cleaned_data['email']
+
+        if self.cleaned_data.get('username'):
+            self.user.username = self.cleaned_data['username']
+        elif new_username and not User.objects.filter(username__iexact=self.user.email).exists():
+            self.user.username = self.user.email
+
         if commit:
             self.user.save()
 
