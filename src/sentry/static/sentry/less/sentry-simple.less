@@ -136,8 +136,12 @@ header {
 
 }
 
+.align-right {
+  text-align: right;
+}
+
 .container {
-  max-width: 940px;
+  max-width: 1040px;
   position: relative;
 }
 
@@ -196,39 +200,20 @@ header {
   .event {
     position: relative;
     border-bottom: 3px solid #F8F9FA;
-    padding: 16px 0 16px 64px;
-
-    &:first-child {
-      padding-top: 0;
-      .count {
-        top: 0;
-      }
-    }
-
-    &:last-child {
-      border-bottom: 0;
-      // margin: 0 0 20px;
-    }
+    padding: 16px 0 16px 30px;
   }
 
-  .count {
-    font-size: 16px;
-    letter-spacing: -1px;
-    .square(52px);
-    line-height:49px;
-    text-align: center;;
+  .checkbox {
     position: absolute;
-    left: 0;
-    top: 19px;
-    border: 3px solid #EEF0F3;
-    border-radius: 52px;
+    left: -13px;
+    top: -7px;
   }
 
   .details {
     h3 {
       font-size: 20px;
-      line-height: 1.4;
-      margin: 0;
+      line-height: 1.1;
+      margin: 0 0 3px;
       a {
         color: inherit;
       }
@@ -252,7 +237,28 @@ header {
       color: #c6c6cc;
       a {
         color: #c6c6cc;
+        margin-left: 8px;
       }
+    }
+  }
+
+  .graph {
+      div {
+        height: 40px;
+        width: 100%;
+        background: #F8F9FA;
+      }
+    }
+
+  .event-header {
+    padding-top: 0;
+    border-color: darken(#F8F9FA, 2);
+    .checkbox {
+      top: -5px;
+    }
+    strong {
+      display: inline-block;
+      padding-top: 6px;
     }
   }
 }

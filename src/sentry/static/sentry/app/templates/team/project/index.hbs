@@ -1,168 +1,73 @@
 <section id="stream">
     <div class="row">
         <div id="main" class="col-sm-9">
-            <div class="stream-actions">
-                <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-default"><span class="icon-arrow-left"></span></button>
-                    <button type="button" class="btn btn-default"><span class="icon-arrow-right"></span></button>
-                </div>
-                <a href="#" class="btn btn-default">Resolve all</a>
-                <a href="#" class="btn btn-default">Pause</a>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Sort by: Last seen <span class="icon-arrow-down"></span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Priority</a></li>
-                    <li><a href="#">Last seen</a></li>
-                    <li><a href="#">First seen</a></li>
-                    <li><a href="#">Frequency</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Total time spent</a></li>
-                    <li><a href="#">Average time spent</a></li>
-                  </ul>
-                </div>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Since: Jan 18th <span class="icon-arrow-down"></span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Priority</a></li>
-                    <li><a href="#">Last seen</a></li>
-                    <li><a href="#">First seen</a></li>
-                    <li><a href="#">Frequency</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Total time spent</a></li>
-                    <li><a href="#">Average time spent</a></li>
-                  </ul>
-                </div>
-            </div>
-
             <ul class="events">
-                <li class="event">
-                    <div class="pull-right">
-                        <div class="btn-group">
-                          <!-- <button type="button" class="btn btn-sm btn-default btn-white">Resolved</button> -->
-                          <button type="button" class="btn btn-sm btn-default btn-white dropdown-toggle" data-toggle="dropdown">
-                            <span class="icon-arrow-down"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                          </button>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Bookmark</a></li>
-                            <li><a href="#">Create GitHub issue</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Remove from Sentry</a></li>
-                          </ul>
+                <li class="event event-header">
+                    <div class="row">
+                        <div class="col-xs-8 details">
+                            <div class="checkbox">
+                                <input type="checkbox">
+                            </div>
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-default btn-sm"><span class="icon-checkmark"></a>
+                                <a href="#" class="btn btn-default btn-sm"><span class="icon-star"></a>
+                            </div>
+                            <div class="btn-group">
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                                    Sort by: Last seen <span class="icon-arrow-down"></span>
+                                  </button>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Priority</a></li>
+                                    <li><a href="#">Last seen</a></li>
+                                    <li><a href="#">First seen</a></li>
+                                    <li><a href="#">Frequency</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Total time spent</a></li>
+                                    <li><a href="#">Average time spent</a></li>
+                                  </ul>
+                                </div>
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                                    Since: Jan 18th <span class="icon-arrow-down"></span>
+                                  </button>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Priority</a></li>
+                                    <li><a href="#">Last seen</a></li>
+                                    <li><a href="#">First seen</a></li>
+                                    <li><a href="#">Frequency</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Total time spent</a></li>
+                                    <li><a href="#">Average time spent</a></li>
+                                  </ul>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-default btn-sm">Pause</a>
                         </div>
-                    </div>
-                    <div class="count">209</div>
-                    <div class="details">
-                        <h3>{{#link-to 'team.project.group' }}sentry.tasks.email in process_inbound_email{{/link-to}}</h3>
-                        <p class="message">Inbound email from unknown address: kunal.kukreja@joshworkz.com</p>
-                        <div class="meta">
-                            <time>3 days ago</time>
-                            <a href="note-count">3 notes</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="event">
-                    <div class="pull-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-white btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span class="icon-arrow-down"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="count">209</div>
-                    <div class="details">
-                        <h3><a href="#">sentry.tasks.email in process_inbound_email</a></h3>
-                        <p class="message">Inbound email from unknown address: kunal.kukreja@joshworkz.com</p>
-                        <div class="meta">
-                            <time>3 days ago</time>
-                            <a href="note-count">3 notes</a>
-                        </div>
+                        <div class="col-xs-3 occurrences align-right"><strong>Occurrences</strong></div>
+                        <div class="col-xs-1 users align-right"><strong>Users</strong></div>
                     </div>
                 </li>
                 <li class="event">
-                    <div class="pull-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-white btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span class="icon-arrow-down"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
+                    <div class="row">
+                        <div class="col-xs-8 details">
+                            <div class="checkbox">
+                                <input type="checkbox">
+                            </div>
+                            <h3>{{#link-to 'team.project.group' }}sentry.tasks.email in process_inbound_email{{/link-to}}</h3>
+                            <p class="message">Inbound email from unknown address: kunal.kukreja@joshworkz.com</p>
+                            <div class="meta">
+                                <time>3 days ago</time>
+                                <a href="note-count">3 notes</a>
+                                <a href="note-count">6 Tags <span class="icon-arrow-down"></span></a>
+                                <a href="note-count">Actions <span class="icon-arrow-down"></span></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="count">209</div>
-                    <div class="details">
-                        <h3><a href="#">sentry.tasks.email in process_inbound_email</a></h3>
-                        <p class="message">Inbound email from unknown address: kunal.kukreja@joshworkz.com</p>
-                        <div class="meta">
-                            <time>3 days ago</time>
-                            <a href="note-count">3 notes</a>
+                        <div class="col-xs-2 graph align-right">
+                            <div></div>
                         </div>
-                    </div>
-                </li>
-                <li class="event">
-                    <div class="pull-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-white btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span class="icon-arrow-down"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="count">209</div>
-                    <div class="details">
-                        <h3><a href="#">sentry.tasks.email in process_inbound_email</a></h3>
-                        <p class="message">Inbound email from unknown address: kunal.kukreja@joshworkz.com</p>
-                        <div class="meta">
-                            <time>3 days ago</time>
-                            <a href="note-count">3 notes</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="event">
-                    <div class="pull-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-white btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span class="icon-arrow-down"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="count">209</div>
-                    <div class="details">
-                        <h3><a href="#">sentry.tasks.email in process_inbound_email</a></h3>
-                        <p class="message">Inbound email from unknown address: kunal.kukreja@joshworkz.com</p>
-                        <div class="meta">
-                            <time>3 days ago</time>
-                            <a href="note-count">3 notes</a>
-                        </div>
+                        <div class="col-xs-1 occurrences align-right">1320</div>
+                        <div class="col-xs-1 users align-right">209</div>
                     </div>
                 </li>
             </ul>

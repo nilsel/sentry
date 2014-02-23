@@ -36,11 +36,22 @@ App.IndexRoute = Ember.Route.extend({
 });
 
 App.TeamProjectController = Ember.Controller.extend({
-  showProjectTabs: true
+  needs: ['teamProjectGroup', 'teamProjectIndex'],
+  showProjectNav: Ember.computed.alias('controllers.teamProjectGroup.showProjectNav'),
+  
+  actions: { 
+    toggleNav: function() {
+      this.toggleProperty('showProjectNav');
+    }
+  }
 });
 
 App.TeamProjectGroupController = Ember.Controller.extend({
-  
+  showProjectNav: false
+});
+
+App.TeamProjectIndexController = Ember.Controller.extend({
+  showProjectNav: true
 });
 
 $(function() {
