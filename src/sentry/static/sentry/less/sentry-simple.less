@@ -200,19 +200,34 @@ header {
   .event {
     position: relative;
     border-bottom: 3px solid #F8F9FA;
-    padding: 16px 0 16px 30px;
+    padding: 16px 10px 16px 32px;
+
+    &.level-alert:after {
+      position: absolute;
+      content: "";
+      top: -3px;
+      right: 0;
+      bottom: -3px;
+      left: 0;
+      width: 4px;
+      background: #f63d09;
+    }
+  }
+
+  .row {
+    margin: 0;
   }
 
   .checkbox {
     position: absolute;
     left: -13px;
-    top: -7px;
+    top: -9px;
   }
 
   .details {
     h3 {
-      font-size: 20px;
-      line-height: 1.1;
+      font-size: 16px;
+      line-height: 1.2;
       margin: 0 0 3px;
       a {
         color: inherit;
@@ -243,12 +258,16 @@ header {
   }
 
   .graph {
-      div {
-        height: 40px;
-        width: 100%;
-        background: #F8F9FA;
-      }
+    div {
+      height: 40px;
+      width: 100%;
+      background: #F8F9FA;
     }
+  }
+
+  .users {
+    padding-right: 10px;
+  }
 
   .event-header {
     padding-top: 0;
@@ -256,6 +275,18 @@ header {
     .checkbox {
       top: -5px;
     }
+
+    .icon-checkmark, .icon-attachment, .icon-pause {
+      position: relative;
+      top: 1px;
+    }
+
+    .icon-exclamation, .icon-users {
+      display: inline-block;
+      font-size: 16px;
+      padding-top: 9px;
+    }
+
     strong {
       display: inline-block;
       padding-top: 6px;
