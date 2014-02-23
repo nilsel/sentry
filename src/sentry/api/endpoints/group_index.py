@@ -10,7 +10,7 @@ from sentry.utils.javascript import transform
 from rest_framework.response import Response
 
 
-class GroupListView(BaseView):
+class GroupIndexView(BaseView):
     @method_decorator(has_access)
     def get(self, request, team, project):
         offset = 0
