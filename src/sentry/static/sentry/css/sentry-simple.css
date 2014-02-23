@@ -5908,6 +5908,13 @@ header .project-dropdown .icon-arrow-down {
   width: 4px;
   background: #f63d09;
 }
+.events .deploy {
+  background: #fcfcfd;
+  font-size: 12px;
+  text-align: center;
+  border-bottom: 3px solid #F8F9FA;
+  padding: 5px 0;
+}
 .events .row {
   margin: 0;
 }
