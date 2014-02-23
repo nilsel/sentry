@@ -5892,6 +5892,7 @@ header .project-dropdown .icon-arrow-down {
 .events {
   padding-left: 0;
   list-style: none;
+  margin-bottom: 20px;
 }
 .events .event {
   position: relative;
@@ -5921,7 +5922,7 @@ header .project-dropdown .icon-arrow-down {
 .events .checkbox {
   position: absolute;
   left: -13px;
-  top: -9px;
+  top: -10px;
 }
 .events .details h3 {
   font-size: 16px;
@@ -5945,11 +5946,7 @@ header .project-dropdown .icon-arrow-down {
   overflow: hidden;
 }
 .events .details .meta {
-  color: #c6c6cc;
-}
-.events .details .meta a {
-  color: #c6c6cc;
-  margin-left: 8px;
+  color: #949ea4;
 }
 .events .graph div {
   height: 40px;
