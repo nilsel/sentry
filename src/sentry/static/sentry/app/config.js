@@ -11,6 +11,9 @@ define({
         },
         'ember-selectize': {
             deps: ['ember', 'selectize'],
+        },
+        'ember-bootstrap/bs-core.max': {
+            deps: ['ember', 'jquery']
         }
     },
     paths: {
@@ -20,12 +23,13 @@ define({
         'controllers': 'controllers',
         'templates': 'templates',
         /*libs*/
-        'jquery': '../vendor/jquery/jquery',
-        'handlebars': '../vendor/handlebars/handlebars',
         'ember': '../vendor/ember/ember',
+        'ember-bootstrap': '../vendor/ember-addons.bs_for_ember/dist/js',
         'ember-data': '../vendor/ember-data/ember-data',
         'ember-selectize': '../vendor/ember-selectize/ember.selectize',
+        'handlebars': '../vendor/handlebars/handlebars',
         'google-code-prettify': '../vendor/google-code-prettify/src/prettify',
+        'jquery': '../vendor/jquery/jquery',
         'microplugin': '../vendor/microplugin/src/microplugin',
         'selectize': '../vendor/selectize/dist/js/selectize',
         'sifter': '../vendor/sifter/sifter',
