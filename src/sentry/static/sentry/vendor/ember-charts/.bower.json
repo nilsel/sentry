@@ -1,0 +1,14 @@
+{
+  "name": "ember-charts",
+  "homepage": "https://github.com/Addepar/ember-charts",
+  "_release": "26c9ea3bc0",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "26c9ea3bc0f3d61d8ca70cade69d0e4fcc4698e5"
+  },
+  "_source": "git://github.com/Addepar/ember-charts.git",
+  "_target": "*",
+  "_originalSource": "ember-charts",
+  "_direct": true
+}

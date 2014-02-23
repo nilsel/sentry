@@ -5,6 +5,9 @@ define({
             deps: ['handlebars', 'jquery'],
             exports: 'Ember'
         },
+        'ember-charts': {
+            deps: ['ember']
+        },
         'ember-data': {
             deps: ['ember'],
             exports: 'DS'
@@ -25,6 +28,7 @@ define({
         /*libs*/
         'ember': '../vendor/ember/ember',
         'ember-bootstrap': '../vendor/ember-addons.bs_for_ember/dist/js',
+        'ember-charts': '../vendor/ember-charts/dist/ember-charts',
         'ember-data': '../vendor/ember-data/ember-data',
         'ember-selectize': '../vendor/ember-selectize/ember.selectize',
         'handlebars': '../vendor/handlebars/handlebars',
