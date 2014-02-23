@@ -4,7 +4,9 @@ define([
     "views/application",
     "views/project_stream",
     "views/team_group",
-    "router"
+    "router",
+
+    "ember-selectize"
 ], function(GroupModel, IndexRoute, ApplicationView, TeamProjectIndexView, TeamProjectGroupView, Router){
     var App = {
         // Models

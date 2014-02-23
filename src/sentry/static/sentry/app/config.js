@@ -1,6 +1,6 @@
 define({
     app_name: "Sentry",
-    shim : {
+    shim: {
         'ember': {
             deps: ['handlebars', 'jquery'],
             exports: 'Ember'
@@ -13,7 +13,7 @@ define({
             deps: ['ember', 'selectize'],
         }
     },
-    paths : {
+    paths: {
         'App': 'application',
         'models': 'models',
         'views': 'views',
@@ -26,7 +26,9 @@ define({
         'ember-data': '../vendor/ember-data/ember-data',
         'ember-selectize': '../vendor/ember-selectize/ember.selectize',
         'google-code-prettify': '../vendor/google-code-prettify/src/prettify',
+        'microplugin': '../vendor/microplugin/src/microplugin',
         'selectize': '../vendor/selectize/dist/js/selectize',
+        'sifter': '../vendor/sifter/sifter',
         /*requirejs-plugins*/
         'text': '../vendor/requirejs-plugins/lib/text',
         'ehbs': '../vendor/require-ember-handlebars-plugin/ehbs',
