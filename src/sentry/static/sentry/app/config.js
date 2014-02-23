@@ -8,6 +8,9 @@ define({
         'ember-data': {
             deps: ['ember'],
             exports: 'DS'
+        },
+        'ember-selectize': {
+            deps: ['ember', 'selectize'],
         }
     },
     paths : {
@@ -21,6 +24,7 @@ define({
         'handlebars': '../vendor/handlebars/handlebars',
         'ember': '../vendor/ember/ember',
         'ember-data': '../vendor/ember-data/ember-data',
+        'ember-selectize': '../vendor/ember-selectize/ember.selectize',
         'google-code-prettify': '../vendor/google-code-prettify/src/prettify',
         'selectize': '../vendor/selectize/dist/js/selectize',
         /*requirejs-plugins*/
