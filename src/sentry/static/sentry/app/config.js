@@ -21,6 +21,8 @@ define({
         'handlebars': '../vendor/handlebars/handlebars',
         'ember': '../vendor/ember/ember',
         'ember-data': '../vendor/ember-data/ember-data',
+        'google-code-prettify': '../vendor/google-code-prettify/src/prettify',
+        'selectize': '../vendor/selectize/dist/js/selectize',
         /*requirejs-plugins*/
         'text': '../vendor/requirejs-plugins/lib/text',
         'hbs': '../vendor/requirejs-plugins/lib/hbs',
