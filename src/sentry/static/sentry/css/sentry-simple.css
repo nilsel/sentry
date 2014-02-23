@@ -5954,6 +5954,7 @@ header .project-dropdown .icon-arrow-down {
 }
 .events .event-header {
   padding-top: 0;
+  padding-bottom: 20px;
   border-color: #f2f4f6;
 }
 .events .event-header .checkbox {
