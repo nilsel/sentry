@@ -5953,8 +5953,10 @@ header .project-dropdown .icon-arrow-down {
   width: 100%;
   background: #F8F9FA;
 }
-.events .users {
-  padding-right: 10px;
+.events .users span,
+.events .occurrences span {
+  display: inline-block;
+  padding-top: 12px;
 }
 .events .event-header {
   padding-top: 0;
