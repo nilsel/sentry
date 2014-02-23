@@ -9,6 +9,8 @@ define([
     "ember-selectize",
     "ember-bootstrap/bs-core.max"
 ], function(GroupModel, IndexRoute, ApplicationView, TeamProjectIndexView, TeamProjectGroupView, Router){
+    'use strict';
+
     var App = {
         // Models
         GroupModel: GroupModel,

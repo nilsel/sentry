@@ -13,7 +13,7 @@ define({
             exports: 'DS'
         },
         'ember-selectize': {
-            deps: ['ember', 'selectize'],
+            deps: ['ember', 'selectize']
         },
         'ember-bootstrap/bs-core.max': {
             deps: ['ember', 'jquery']

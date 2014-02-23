@@ -1,4 +1,6 @@
 (function(root){
+    'use strict';
+
     require(["config"], function(config){
         requirejs.config(config);
         require(["App", "ember"], function(App, Ember){

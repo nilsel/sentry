@@ -4,6 +4,7 @@ define([
     "ehbs!team/project/settings",
     "ehbs!team/project/_project-nav"
 ], function(Ember) {
+	'use strict';
 
     return Ember.View.extend();
 });
