@@ -13,6 +13,7 @@
     "ember": "~1.4.0-beta.2",
     "ember-data": "~1.0.0-beta.6",
     "requirejs": "~2.1.0",
-    "requirejs-plugins": "~1.0.2"
+    "requirejs-plugins": "~1.0.2",
+    "require-ember-handlebars-plugin": "~0.1.1"
   }
 }

@@ -1,9 +1,7 @@
 define([
     "ember",
-    "text!templates/application.hbs"
-], function(Ember, applicationTemplate) {
+    "ehbs!application"
+], function(Ember) {
 
-    return Ember.View.extend({
-        defaultTemplate: Ember.Handlebars.compile(applicationTemplate)
-    });
+    return Ember.View.extend();
 });

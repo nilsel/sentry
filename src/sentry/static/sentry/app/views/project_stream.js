@@ -1,10 +1,8 @@
 define([
     "ember",
-    "text!templates/team/project/index.hbs",
-    "text!templates/team/project/-project-nav.hbs"
-], function(Ember, template) {
+    "ehbs!team/project/index",
+    "ehbs!team/project/_project-nav"
+], function(Ember) {
 
-    return Ember.View.extend({
-        defaultTemplate: Ember.Handlebars.compile(template)
-    });
+    return Ember.View.extend();
 });

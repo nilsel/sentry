@@ -25,12 +25,16 @@ define({
         'selectize': '../vendor/selectize/dist/js/selectize',
         /*requirejs-plugins*/
         'text': '../vendor/requirejs-plugins/lib/text',
-        'hbs': '../vendor/requirejs-plugins/lib/hbs',
+        'ehbs': '../vendor/require-ember-handlebars-plugin/ehbs',
         'domReady': '../vendor/requirejs-plugins/lib/domReady'
     },
-    /*hbs plugin options*/
-    hbs: {
-        disableI18n: true,
-        templateExtension: "hbs"
+    ehbs: {
+        paths: {
+            casing: "camel",
+            templates: "templates",
+            views: "views",
+            controllers: "controllers",
+            helpers: "helpers"
+        }
     }
 });

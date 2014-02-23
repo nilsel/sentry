@@ -1,9 +1,7 @@
 define([
     "ember",
-    "text!templates/team/project/group.hbs"
-], function(Ember, template) {
+    "ehbs!team/project/group"
+], function(Ember) {
 
-    return Ember.View.extend({
-        defaultTemplate: Ember.Handlebars.compile(template)
-    });
+    return Ember.View.extend();
 });
