@@ -6,7 +6,7 @@ define({
             exports: 'Ember'
         },
         'ember-charts': {
-            deps: ['ember']
+            deps: ['ember', 'd3']
         },
         'ember-data': {
             deps: ['ember'],
@@ -26,6 +26,7 @@ define({
         'controllers': 'controllers',
         'templates': 'templates',
         /*libs*/
+        'd3': '../vendor/d3/d3',
         'ember': '../vendor/ember/ember',
         'ember-bootstrap': '../vendor/ember-addons.bs_for_ember/dist/js',
         'ember-charts': '../vendor/ember-charts/dist/ember-charts',

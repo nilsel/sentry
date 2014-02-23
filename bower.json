@@ -17,6 +17,7 @@
     "requirejs-plugins": "~1.0.2",
     "require-ember-handlebars-plugin": "~0.1.1",
     "selectize": "~0.8.5",
-    "ember-charts": "*"
+    "ember-charts": "*",
+    "d3": "~3.4.2"
   }
 }
