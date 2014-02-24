@@ -26,6 +26,7 @@ define({
         'views': 'views',
         /*libs*/
         'd3': '../vendor/d3/d3',
+        'd3-tip': '../vendor/d3-tip/index',
         'ember': '../vendor/ember/ember',
         'ember-bootstrap': '../vendor/ember-addons.bs_for_ember/dist/js',
         'ember-data': '../vendor/ember-data/ember-data',

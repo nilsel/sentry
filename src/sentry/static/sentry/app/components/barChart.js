@@ -1,7 +1,8 @@
 define([
     "d3",
+    "d3-tip",
     "ember"
-], function(d3, Ember) {
+], function(d3, d3tip, Ember) {
     'use strict';
 
     function timeSeriesChart() {
@@ -12,6 +13,7 @@ define([
           yValue = function(d) { return d[1]; },
           xScale = d3.time.scale(),
           yScale = d3.scale.linear(),
+          yAxis = d3.svg.axis().scale(yScale).orient("left"),
           xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(6, 0),
           area = d3.svg.area().x(X).y1(Y),
           line = d3.svg.line().x(X).y(Y);
@@ -25,15 +27,21 @@ define([
           });
 
           // Update the x-scale.
-          xScale.domain(data.map(function(d) { return d[0]; }));
-          yScale.domain([0, d3.max(data, function(d) { return d[1]; })]);
+          xScale
+            .domain(data.map(function(d) { return d[0]; }))
+            .range([0, width - margin.left - margin.right]);
 
-          // var tip = d3.tip()
-          //   .attr('class', 'd3-tip')
-          //   .offset([-10, 0])
-          //   .html(function(d) {
-          //     return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
-          //   })
+          // Update the y-scale
+          yScale
+            .domain([0, d3.max(data, function(d) { return d[1]; })])
+            .range([height - margin.top - margin.bottom, 0]);
+
+          var tip = d3tip()
+            .attr('class', 'd3-tip')
+            .offset([-10, 0])
+            .html(function(d) {
+              return "<strong>Frequency:</strong> <span style='color:red'>" + d[1] + "</span>";
+            });
 
           var svg = d3.select(this).append("svg")
               .attr("width", width)
@@ -41,22 +49,33 @@ define([
             .append("g")
               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+          svg.call(tip);
+
+          svg.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + yScale.range()[0] + ")")
+              .call(xAxis);
+
+          svg.append("g")
+              .attr("class", "y axis")
+              .call(yAxis)
+            .append("text")
+              .attr("transform", "rotate(-90)")
+              .attr("y", 6)
+              .attr("dy", ".71em")
+              .style("text-anchor", "end")
+              .text("Frequency");
+
           svg.selectAll(".bar")
               .data(data)
             .enter().append("rect")
               .attr("class", "bar")
               .attr("x", X)
               .attr("y", Y)
-              .attr("width", 20)
-              .attr("height", function(d) { return height - yScale(d[1]); });
-          //     .on('mouseover', tip.show)
-          //     .on('mouseout', tip.hide)
-
-          // svg.call(tip)
-
-          svg.select(".x.axis")
-              .attr("transform", "translate(0," + yScale.range()[0] + ")")
-              .call(xAxis);
+              .attr("width", function(d) { return width / data.length; })
+              .attr("height", function(d) { return height - yScale(d[1]); })
+              .on('mouseover', tip.show)
+              .on('mouseout', tip.hide);
         });
       }
 
@@ -104,7 +123,7 @@ define([
     }
 
     var BarChartComponent = Ember.Component.extend({
-        tagName: 'svg',
+        tagName: 'figure',
         attributeBindings: 'width height'.w(),
         margin: {top: 20, right: 20, bottom: 30, left: 40},
 
