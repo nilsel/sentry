@@ -1,6 +1,10 @@
 define(["ember-data"], function(DS){
     'use strict';
 
+    var randomNumber = function(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    };
+
     var GroupModel = DS.Model.extend({
         title: DS.attr('string'),
         culprit: DS.attr('string'),
@@ -17,104 +21,104 @@ define(["ember-data"], function(DS){
             id: i,
             title: 'Inbound email from unknown address: foo@example.com',
             culprit: 'sentry.tasks.email in process_inbound_email',
-            count: 1341234234,
+            count: randomNumber(1, 10000),
             firstSeen: new Date(),
             lastSeen: new Date(),
             historicalData: [
               {
-                "count": 5002,
+                "count": randomNumber(1, 10000),
                 "time": 1361668611
               },
               {
-                "count": 1466,
+                "count": randomNumber(1, 10000),
                 "time": 1361755011
               },
               {
-                "count": 2472,
+                "count": randomNumber(1, 10000),
                 "time": 1361841411
               },
               {
-                "count": 5174,
+                "count": randomNumber(1, 10000),
                 "time": 1361927811
               },
               {
-                "count": 6715,
+                "count": randomNumber(1, 10000),
                 "time": 1362014211
               },
               {
-                "count": 9687,
+                "count": randomNumber(1, 10000),
                 "time": 1362100611
               },
               {
-                "count": 3545,
+                "count": randomNumber(1, 10000),
                 "time": 1362187011
               },
               {
-                "count": 6975,
+                "count": randomNumber(1, 10000),
                 "time": 1362273411
               },
               {
-                "count": 7289,
+                "count": randomNumber(1, 10000),
                 "time": 1362359811
               },
               {
-                "count": 8080,
+                "count": randomNumber(1, 10000),
                 "time": 1362446211
               },
               {
-                "count": 7156,
+                "count": randomNumber(1, 10000),
                 "time": 1362532611
               },
               {
-                "count": 4047,
+                "count": randomNumber(1, 10000),
                 "time": 1362619011
               },
               {
-                "count": 7166,
+                "count": randomNumber(1, 10000),
                 "time": 1362705411
               },
               {
-                "count": 3071,
+                "count": randomNumber(1, 10000),
                 "time": 1362791811
               },
               {
-                "count": 5681,
+                "count": randomNumber(1, 10000),
                 "time": 1362878211
               },
               {
-                "count": 530,
+                "count": randomNumber(1, 10000),
                 "time": 1362964611
               },
               {
-                "count": 6076,
+                "count": randomNumber(1, 10000),
                 "time": 1363051011
               },
               {
-                "count": 4307,
+                "count": randomNumber(1, 10000),
                 "time": 1363137411
               },
               {
-                "count": 6120,
+                "count": randomNumber(1, 10000),
                 "time": 1363223811
               },
               {
-                "count": 9597,
+                "count": randomNumber(1, 10000),
                 "time": 1363310211
               },
               {
-                "count": 716,
+                "count": randomNumber(1, 10000),
                 "time": 1363396611
               },
               {
-                "count": 9170,
+                "count": randomNumber(1, 10000),
                 "time": 1363483011
               },
               {
-                "count": 4867,
+                "count": randomNumber(1, 10000),
                 "time": 1363569411
               },
               {
-                "count": 6696,
+                "count": randomNumber(1, 10000),
                 "time": 1363655811
               }
             ]
