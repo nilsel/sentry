@@ -1,12 +1,13 @@
 define([
     "d3",
     "d3-tip",
-    "ember"
-], function(d3, d3tip, Ember) {
+    "ember",
+    "jquery"
+], function(d3, d3tip, Ember, $) {
     'use strict';
 
     function timeSeriesChart() {
-      var margin = {top: 20, right: 20, bottom: 20, left: 20},
+        var margin = {top: 0, right: 0, bottom: 0, left: 0},
           width = 760,
           height = 120,
           xValue = function(d) { return d[0]; },
@@ -14,112 +15,108 @@ define([
           xScale = d3.time.scale(),
           yScale = d3.scale.linear(),
           yAxis = d3.svg.axis().scale(yScale).orient("left"),
-          xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(6, 0);
+          xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(0, 0);
 
-      function chart(selection) {
-        selection.each(function(data) {
-          // Convert data to standard representation greedily;
-          // this is needed for nondeterministic accessors.
+        function chart(selection) {
+            selection.each(function(data) {
+                width = $(this).width();
+                height = $(this).height();
 
-          data = data.map(function(d, i) {
-            return [xValue.call(data, d, i), yValue.call(data, d, i)];
-          });
+                // Convert data to standard representation greedily;
+                // this is needed for nondeterministic accessors.
+                data = data.map(function(d, i) {
+                    return [xValue.call(data, d, i), yValue.call(data, d, i)];
+                });
 
-          // Update the x-scale.
-          xScale
-            // .domain(data.map(function(d) { return d[0]; }))
-            .domain([data[0][0], data[data.length - 1][0]])
-            .rangeRound([0, width - margin.left - margin.right]);
+                var max_y = d3.max(data, function(d) { return d[1]; });
 
-          // Update the y-scale
-          yScale
-            .domain([0, d3.max(data, function(d) { return d[1]; })])
-            .range([height - margin.top - margin.bottom, 0]);
+                // Update the x-scale.
+                xScale
+                    // .domain(data.map(function(d) { return d[0]; }))
+                    .domain([data[0][0], data[data.length - 1][0]])
+                    .rangeRound([0, width - margin.left - margin.right]);
 
-          var tip = d3tip()
-            .attr('class', 'd3-tip')
-            .offset([-10, 0])
-            .html(function(d) {
-              return "<strong>Frequency:</strong> <span style='color:red'>" + d[1] + "</span>";
+                // Update the y-scale
+                yScale
+                    .domain([0, max_y])
+                    .range([height - margin.top - margin.bottom, 0]);
+
+
+                yAxis.tickValues([0, max_y]);
+
+                var tip = d3tip()
+                    .attr('class', 'd3-tip')
+                    .offset([-10, 0])
+                    .html(function(d) {
+                        return d[1];
+                    });
+
+                var svg = d3.select(this).append("svg")
+                    .attr("width", width)
+                    .attr("height", height)
+                  .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                svg.call(tip);
+
+                // svg.append("g")
+                //     .attr("class", "y axis")
+                //     .call(yAxis)
+
+                svg.selectAll(".bar")
+                    .data(data)
+                  .enter().append("rect")
+                    .attr("class", "bar")
+                    .attr("x", X)
+                    .attr("y", Y)
+                    .attr("width", function(d) { return (width / data.length) - 2; })
+                    .attr("height", function(d) { return height - yScale(d[1]); })
+                    .on('mouseover', tip.show)
+                    .on('mouseout', tip.hide);
             });
+        }
 
-          var svg = d3.select(this).append("svg")
-              .attr("width", width)
-              .attr("height", height)
-            .append("g")
-              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        // The x-accessor for the path generator; xScale ∘ xValue.
+        function X(d) {
+            return xScale(d[0]);
+        }
 
-          svg.call(tip);
+        // The y-accessor for the path generator; yScale ∘ yValue.
+        function Y(d) {
+            return yScale(d[1]);
+        }
 
-          svg.append("g")
-              .attr("class", "x axis")
-              .attr("transform", "translate(0," + yScale.range()[0] + ")")
-              .call(xAxis);
+        chart.margin = function(_) {
+            if (!arguments.length) return margin;
+            margin = _;
+            return chart;
+        };
 
-          svg.append("g")
-              .attr("class", "y axis")
-              .call(yAxis)
-            .append("text")
-              .attr("transform", "rotate(-90)")
-              .attr("y", 6)
-              .attr("dy", ".71em")
-              .style("text-anchor", "end")
-              .text("Frequency");
+        chart.width = function(_) {
+            if (!arguments.length) return width;
+            width = _;
+            return chart;
+        };
 
-          svg.selectAll(".bar")
-              .data(data)
-            .enter().append("rect")
-              .attr("class", "bar")
-              .attr("x", X)
-              .attr("y", Y)
-              .attr("width", function(d) { return width / data.length; })
-              .attr("height", function(d) { return height - yScale(d[1]); })
-              .on('mouseover', tip.show)
-              .on('mouseout', tip.hide);
-        });
-      }
+        chart.height = function(_) {
+            if (!arguments.length) return height;
+            height = _;
+            return chart;
+        };
 
-      // The x-accessor for the path generator; xScale ∘ xValue.
-      function X(d) {
-        return xScale(d[0]);
-      }
+        chart.x = function(_) {
+            if (!arguments.length) return xValue;
+            xValue = _;
+            return chart;
+        };
 
-      // The y-accessor for the path generator; yScale ∘ yValue.
-      function Y(d) {
-        return height - margin.top - margin.bottom - (height - margin.top - margin.bottom - yScale(d[1]));
-      }
+        chart.y = function(_) {
+            if (!arguments.length) return yValue;
+            yValue = _;
+            return chart;
+        };
 
-      chart.margin = function(_) {
-        if (!arguments.length) return margin;
-        margin = _;
         return chart;
-      };
-
-      chart.width = function(_) {
-        if (!arguments.length) return width;
-        width = _;
-        return chart;
-      };
-
-      chart.height = function(_) {
-        if (!arguments.length) return height;
-        height = _;
-        return chart;
-      };
-
-      chart.x = function(_) {
-        if (!arguments.length) return xValue;
-        xValue = _;
-        return chart;
-      };
-
-      chart.y = function(_) {
-        if (!arguments.length) return yValue;
-        yValue = _;
-        return chart;
-      };
-
-      return chart;
     }
 
     var BarChartComponent = Ember.Component.extend({
