@@ -27,7 +27,8 @@ define([
 
           // Update the x-scale.
           xScale
-            .domain(data.map(function(d) { return d[0]; }))
+            // .domain(data.map(function(d) { return d[0]; }))
+            .domain([data[0][0], data[data.length - 1][0]])
             .rangeRound([0, width - margin.left - margin.right]);
 
           // Update the y-scale
