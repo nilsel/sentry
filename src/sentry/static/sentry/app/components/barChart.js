@@ -18,7 +18,6 @@ define([
 
       function chart(selection) {
         selection.each(function(data) {
-
           // Convert data to standard representation greedily;
           // this is needed for nondeterministic accessors.
           data = data.map(function(d, i) {
@@ -26,37 +25,36 @@ define([
           });
 
           // Update the x-scale.
-          xScale
-              .domain(d3.extent(data, function(d) { return d[0]; }))
-              .range([0, width - margin.left - margin.right]);
+          xScale.domain(data.map(function(d) { return d[0]; }));
+          yScale.domain([0, d3.max(data, function(d) { return d[1]; })]);
 
-          // Update the y-scale.
-          yScale
-              .domain([0, d3.max(data, function(d) { return d[1]; })])
-              .range([height - margin.top - margin.bottom, 0]);
+          // var tip = d3.tip()
+          //   .attr('class', 'd3-tip')
+          //   .offset([-10, 0])
+          //   .html(function(d) {
+          //     return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
+          //   })
 
-          // Select the svg element, if it exists.
-          var svg = d3.select(this).selectAll("svg").data([data]);
-
-          // Otherwise, create the skeletal chart.
-          var gEnter = svg.enter().append("svg").append("g");
-          gEnter.append("path").attr("class", "area");
-          gEnter.append("g").attr("class", "x axis");
-
-          // Update the outer dimensions.
-          svg .attr("width", width)
-              .attr("height", height);
-
-          // Update the inner dimensions.
-          var g = svg.select("g")
+          var svg = d3.select(this).append("svg")
+              .attr("width", width)
+              .attr("height", height)
+            .append("g")
               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-          // Update the area path.
-          g.select(".area")
-              .attr("d", area.y0(yScale.range()[0]));
+          svg.selectAll(".bar")
+              .data(data)
+            .enter().append("rect")
+              .attr("class", "bar")
+              .attr("x", X)
+              .attr("y", Y)
+              .attr("width", 20)
+              .attr("height", function(d) { return height - yScale(d[1]); });
+          //     .on('mouseover', tip.show)
+          //     .on('mouseout', tip.hide)
 
-          // Update the x-axis.
-          g.select(".x.axis")
+          // svg.call(tip)
+
+          svg.select(".x.axis")
               .attr("transform", "translate(0," + yScale.range()[0] + ")")
               .call(xAxis);
         });
@@ -128,12 +126,12 @@ define([
 
         draw: function(){
             var chart = timeSeriesChart()
-                .x(function(d) { return new Date(d.x * 1000); })
-                .y(function(d) { return d.y; })
+                .x(function(d) { return new Date(d.time * 1000); })
+                .y(function(d) { return d.count; })
                 .width(this.get('width'))
                 .height(this.get('height'));
 
-            d3.select('#'+this.get('elementId'))
+            d3.select('#' + this.get('elementId'))
                 .datum(this.get('data'))
                 .call(chart);
         },
