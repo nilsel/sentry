@@ -85,7 +85,7 @@ define([
 
       // The y-accessor for the path generator; yScale ∘ yValue.
       function Y(d) {
-        return yScale(d[1]);
+        return height - margin.top - margin.bottom - (height - margin.top - margin.bottom - yScale(d[1]));
       }
 
       chart.margin = function(_) {
