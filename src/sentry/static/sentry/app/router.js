@@ -1,7 +1,10 @@
 define(["ember"], function(Ember){
     'use strict';
 
-    var Router = Ember.Router.extend();
+    var Router = Ember.Router.extend({
+        location: 'history',
+        rootURL: '/ember/'
+    });
 
     Router.map(function() {
         this.route('index', {path: '/'});
@@ -17,7 +20,7 @@ define(["ember"], function(Ember){
         this.resource('team', { path: '/:team_slug/' }, function(){
             this.resource('team.project', { path: '/:project_slug/' }, function(){
                 this.route('index', { path: '/' });
-                this.route('group');
+                this.route('group', { path: '/groups/:group_id/' });
                 this.resource('team.project.explore', { path: '/explore/' }, function(){
                     this.route('item');
                 });

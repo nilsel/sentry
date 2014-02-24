@@ -49,126 +49,30 @@
                         <div class="col-xs-1 users align-right"><span class="icon-users"></span></div>
                     </div>
                 </li>
-                <li class="event level-alert">
-                    <div class="row">
-                        <div class="col-xs-8 details">
-                            <div class="checkbox">
-                                <input type="checkbox">
-                            </div>
-                            <h3>{{#link-to 'team.project.group' }}Inbound email from unknown address: kunal.kukreja@joshworkz.com{{/link-to}}</h3>
-                            <div class="meta">
-                                <time>3 days ago</time> &middot;
-                                <span class="message">sentry.tasks.email in process_inbound_email</span>
-                            </div>
-                        </div>
-                        <div class="col-xs-2 graph align-right">
-                            <div></div>
-                        </div>
-                        <div class="col-xs-1 occurrences align-right"><span>1320</span></div>
-                        <div class="col-xs-1 users align-right"><span>209</span></div>
-                    </div>
-                </li>
-                <li class="event">
-                    <div class="row">
-                        <div class="col-xs-8 details">
-                            <div class="checkbox">
-                                <input type="checkbox">
-                            </div>
-                            <h3>{{#link-to 'team.project.group' }}Inbound email from unknown address: kunal.kukreja@joshworkz.com{{/link-to}}</h3>
-                            <div class="meta">
-                                <time>3 days ago</time> &middot;
-                                <span class="message">sentry.tasks.email in process_inbound_email</span>
-                            </div>
-                        </div>
-                        <div class="col-xs-2 graph align-right">
-                            <div></div>
-                        </div>
-                        <div class="col-xs-1 occurrences align-right"><span>1320</span></div>
-                        <div class="col-xs-1 users align-right"><span>209</span></div>
-                    </div>
-                </li>
                 <li class="deploy">
                     <code>master</code> deployed by <a href="#">ckj</a> at 2014-02-23 06:13:31 UTC
                 </li>
-                <li class="event level-alert">
-                    <div class="row">
-                        <div class="col-xs-8 details">
-                            <div class="checkbox">
-                                <input type="checkbox">
-                            </div>
-                            <h3>{{#link-to 'team.project.group' }}Inbound email from unknown address: kunal.kukreja@joshworkz.com{{/link-to}}</h3>
-                            <div class="meta">
-                                <time>3 days ago</time> &middot;
-                                <span class="message">sentry.tasks.email in process_inbound_email</span>
-                            </div>
-                        </div>
-                        <div class="col-xs-2 graph align-right">
-                            <div></div>
-                        </div>
-                        <div class="col-xs-1 occurrences align-right"><span>1320</span></div>
-                        <div class="col-xs-1 users align-right"><span>209</span></div>
-                    </div>
-                </li>
-                <li class="event level-alert">
-                    <div class="row">
-                        <div class="col-xs-8 details">
-                            <div class="checkbox">
-                                <input type="checkbox">
-                            </div>
-                            <h3>{{#link-to 'team.project.group' }}Inbound email from unknown address: kunal.kukreja@joshworkz.com{{/link-to}}</h3>
-                            <div class="meta">
-                                <time>3 days ago</time> &middot;
-                                <span class="message">sentry.tasks.email in process_inbound_email</span>
-                            </div>
-                        </div>
-                        <div class="col-xs-2 graph align-right">
-                            <div></div>
-                        </div>
-                        <div class="col-xs-1 occurrences align-right"><span>1320</span></div>
-                        <div class="col-xs-1 users align-right"><span>209</span></div>
-                    </div>
-                </li>
+                {{#each}}
                 <li class="event">
                     <div class="row">
                         <div class="col-xs-8 details">
                             <div class="checkbox">
                                 <input type="checkbox">
                             </div>
-                            <h3>{{#link-to 'team.project.group' }}Inbound email from unknown address: kunal.kukreja@joshworkz.com{{/link-to}}</h3>
+                            <h3>{{#link-to 'team.project.group' id}}{{title}}{{/link-to}}</h3>
                             <div class="meta">
                                 <time>3 days ago</time> &middot;
-                                <span class="message">sentry.tasks.email in process_inbound_email</span>
+                                <span class="message">{{culprit}}</span>
                             </div>
                         </div>
                         <div class="col-xs-2 graph align-right">
-                            <div></div>
+                            {{bar-chart width="100%" height="100%" data=historicalData}}
                         </div>
-                        <div class="col-xs-1 occurrences align-right"><span>1320</span></div>
+                        <div class="col-xs-1 occurrences align-right"><span>{{format-number count}}</span></div>
                         <div class="col-xs-1 users align-right"><span>209</span></div>
                     </div>
                 </li>
-                <li class="deploy">
-                    <code>master</code> deployed by <a href="#">zeeg</a> at 2014-02-23 06:13:31 UTC
-                </li>
-                <li class="event">
-                    <div class="row">
-                        <div class="col-xs-8 details">
-                            <div class="checkbox">
-                                <input type="checkbox">
-                            </div>
-                            <h3>{{#link-to 'team.project.group' }}Inbound email from unknown address: kunal.kukreja@joshworkz.com{{/link-to}}</h3>
-                            <div class="meta">
-                                <time>3 days ago</time> &middot;
-                                <span class="message">sentry.tasks.email in process_inbound_email</span>
-                            </div>
-                        </div>
-                        <div class="col-xs-2 graph align-right">
-                            <div></div>
-                        </div>
-                        <div class="col-xs-1 occurrences align-right"><span>1320</span></div>
-                        <div class="col-xs-1 users align-right"><span>209</span></div>
-                    </div>
-                </li>
+                {{/each}}
             </ul>
             <div class="stream-actions">
                 <div class="btn-group pull-right">
@@ -185,23 +89,21 @@
             <div class="filter">
                 <h6><label for="status">Status</label></h6>
                 <p>
-                    <select id="status" class="contacts selectized" placeholder="Choose a status..." name="status">
-                        <option value="">Choose a status...</option>
-                        <option value="0">Unresolved</option>
-                        <option value="1">Resolved</option>
-                        <option value="2">Muted</option>
-                    </select>
+                {{ view Ember.Selectize id="status"
+                   contentBinding="statusChoices"
+                   optionValuePath="content.id"
+                   optionLabelPath="content.name"
+                   placeholder="Choose a status..." }}
                 </p>
             </div>
             <div class="filter">
                 <h6><label for="client">Client</label></h6>
                 <p>
-                    <select id="client" class="contacts selectized" placeholder="Choose a client..." name="client">
-                        <option value="">Choose a client...</option>
-                        <option value="0">Unresolved</option>
-                        <option value="1">Resolved</option>
-                        <option value="2">Muted</option>
-                    </select>
+                {{ view Ember.Selectize id="client"
+                   contentBinding="statusChoices"
+                   optionValuePath="content.id"
+                   optionLabelPath="content.name"
+                   placeholder="Choose a client..." }}
                 </p>
             </div>
         </div>

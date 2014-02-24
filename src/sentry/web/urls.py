@@ -188,7 +188,7 @@ urlpatterns += patterns('',
     # Generic
     url(r'^$', generic.dashboard,
         name='sentry'),
-    url(r'^ember/$', generic.index,
+    url(r'^ember/', generic.index,
         name='sentry-index'),
 
     # Admin

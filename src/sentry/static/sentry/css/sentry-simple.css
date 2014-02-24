@@ -5948,10 +5948,10 @@ header .project-dropdown .icon-arrow-down {
 .events .details .meta {
   color: #949ea4;
 }
-.events .graph div {
+.events .graph figure {
   height: 40px;
   width: 100%;
-  background: #F8F9FA;
+  margin-bottom: 0;
 }
 .events .users span,
 .events .occurrences span {
@@ -6230,8 +6230,58 @@ header .project-dropdown .icon-arrow-down {
   font-size: 18px;
 }
 .chart {
-  background: #f4f5f5;
+}
+
+figure {
   height: 140px;
   margin: 0 0 30px;
   border-radius: 7px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: orange;
+}
+
+.bar:hover {
+  fill: orangered ;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
 }

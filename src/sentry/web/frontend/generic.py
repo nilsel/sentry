@@ -8,7 +8,6 @@ sentry.web.frontend.generic
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
-from django.views.decorators.cache import never_cache
 
 from sentry.models import Team
 from sentry.permissions import can_create_teams
@@ -40,7 +39,6 @@ def dashboard(request, template='dashboard.html'):
     }, request)
 
 
-@never_cache
 def static_media(request, **kwargs):
     """
     Serve static files below a given point in the directory structure.
