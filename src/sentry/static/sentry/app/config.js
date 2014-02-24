@@ -23,6 +23,7 @@ define({
         'controllers': 'controllers',
         'templates': 'templates',
         /*libs*/
+        'd3': '../vendor/d3/d3',
         'ember': '../vendor/ember/ember',
         'ember-bootstrap': '../vendor/ember-addons.bs_for_ember/dist/js',
         'ember-data': '../vendor/ember-data/ember-data',
