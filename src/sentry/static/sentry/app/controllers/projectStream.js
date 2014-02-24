@@ -6,5 +6,7 @@ define([
 ], function(Ember) {
 	'use strict';
 
-    return Ember.View.extend();
+    return Ember.Controller.extend({
+        showProjectTabs: true
+    });
 });
