@@ -4,7 +4,7 @@ define(["ember-data"], function(DS){
     var GroupModel = DS.Model.extend({
         title: DS.attr('string'),
         culprit: DS.attr('string'),
-        timesSeen: DS.attr('number'),
+        count: DS.attr('number'),
         firstSeen: DS.attr('date'),
         lastSeen: DS.attr('date'),
         historicalData: DS.attr()
@@ -17,7 +17,7 @@ define(["ember-data"], function(DS){
             id: i,
             title: 'Inbound email from unknown address: foo@example.com',
             culprit: 'sentry.tasks.email in process_inbound_email',
-            timesSeen: 1341234234,
+            count: 1341234234,
             firstSeen: new Date(),
             lastSeen: new Date(),
             historicalData: [
