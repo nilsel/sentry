@@ -5519,9 +5519,6 @@ td.visible-print {
 .icon-users:before {
   content: "\e612";
 }
-.icon-attachment:before {
-  content: "\e613";
-}
 .icon-pause:before {
   content: "\e614";
 }
@@ -5539,6 +5536,9 @@ td.visible-print {
 }
 .icon-arrow-right:before {
   content: "\e611";
+}
+.icon-bookmark:before {
+  content: "\e613";
 }
 .selectize-control {
   position: relative;
@@ -5966,10 +5966,13 @@ header .project-dropdown .icon-arrow-down {
   top: -5px;
 }
 .events .event-header .icon-checkmark,
-.events .event-header .icon-attachment,
 .events .event-header .icon-pause {
   position: relative;
   top: 1px;
+}
+.events .event-header .icon-bookmark {
+  position: relative;
+  top: 2px;
 }
 .events .event-header .icon-exclamation,
 .events .event-header .icon-users {
@@ -6234,6 +6237,7 @@ header .project-dropdown .icon-arrow-down {
   border-radius: 7px;
 }
 figure {
+  max-width: 100%;
   height: 140px;
   margin: 0 0 30px;
   border-radius: 7px;
@@ -6259,7 +6263,7 @@ figure {
   padding: 12px;
   background: #4c5459;
   color: #fff;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
