@@ -89,23 +89,21 @@
             <div class="filter">
                 <h6><label for="status">Status</label></h6>
                 <p>
-                    <select id="status" class="contacts selectized" placeholder="Choose a status..." name="status">
-                        <option value="">Choose a status...</option>
-                        <option value="0">Unresolved</option>
-                        <option value="1">Resolved</option>
-                        <option value="2">Muted</option>
-                    </select>
+                {{ view Ember.Selectize id="status"
+                   contentBinding="statusChoices"
+                   optionValuePath="content.id"
+                   optionLabelPath="content.name"
+                   placeholder="Choose a status..." }}
                 </p>
             </div>
             <div class="filter">
                 <h6><label for="client">Client</label></h6>
                 <p>
-                    <select id="client" class="contacts selectized" placeholder="Choose a client..." name="client">
-                        <option value="">Choose a client...</option>
-                        <option value="0">Unresolved</option>
-                        <option value="1">Resolved</option>
-                        <option value="2">Muted</option>
-                    </select>
+                {{ view Ember.Selectize id="status"
+                   contentBinding="statusChoices"
+                   optionValuePath="content.id"
+                   optionLabelPath="content.name"
+                   placeholder="Choose a status..." }}
                 </p>
             </div>
         </div>
