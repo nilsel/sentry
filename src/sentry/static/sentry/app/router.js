@@ -1,7 +1,10 @@
 define(["ember"], function(Ember){
     'use strict';
 
-    var Router = Ember.Router.extend();
+    var Router = Ember.Router.extend({
+        location: 'history',
+        rootURL: '/ember/'
+    });
 
     Router.map(function() {
         this.route('index', {path: '/'});
