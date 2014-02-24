@@ -14,14 +14,13 @@ define([
           xScale = d3.time.scale(),
           yScale = d3.scale.linear(),
           yAxis = d3.svg.axis().scale(yScale).orient("left"),
-          xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(6, 0),
-          area = d3.svg.area().x(X).y1(Y),
-          line = d3.svg.line().x(X).y(Y);
+          xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(6, 0);
 
       function chart(selection) {
         selection.each(function(data) {
           // Convert data to standard representation greedily;
           // this is needed for nondeterministic accessors.
+
           data = data.map(function(d, i) {
             return [xValue.call(data, d, i), yValue.call(data, d, i)];
           });
@@ -29,7 +28,7 @@ define([
           // Update the x-scale.
           xScale
             .domain(data.map(function(d) { return d[0]; }))
-            .range([0, width - margin.left - margin.right]);
+            .rangeRound([0, width - margin.left - margin.right]);
 
           // Update the y-scale
           yScale
@@ -84,7 +83,7 @@ define([
         return xScale(d[0]);
       }
 
-      // The x-accessor for the path generator; yScale ∘ yValue.
+      // The y-accessor for the path generator; yScale ∘ yValue.
       function Y(d) {
         return yScale(d[1]);
       }
