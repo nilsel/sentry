@@ -263,10 +263,9 @@ header {
   }
 
   .graph {
-    div {
+    figure { 
       height: 40px;
-      width: 100%;
-      background: #F8F9FA;
+      margin: 0;
     }
   }
 
@@ -568,7 +567,61 @@ header {
 
 .chart {
   background: lighten(#f1f2f3, 1);
+  
+  margin: 0 0 30px;
+  border-radius: 7px;
+}
+
+figure {
   height: 140px;
   margin: 0 0 30px;
   border-radius: 7px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: lighten(@gray, 46);
+}
+
+.bar:hover {
+  fill: @sentry-orange;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: @gray-dark;
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: @gray-dark;
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
 }

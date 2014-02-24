@@ -634,7 +634,7 @@ code {
   padding: 2px 4px;
   font-size: 90%;
   color: #f63d09;
-  background-color: #fef3f0;
+  background-color: rgba(0, 0, 0, 0.03);
   white-space: nowrap;
   border-radius: 5px;
 }
@@ -5950,8 +5950,7 @@ header .project-dropdown .icon-arrow-down {
 }
 .events .graph figure {
   height: 40px;
-  width: 100%;
-  margin-bottom: 0;
+  margin: 0;
 }
 .events .users span,
 .events .occurrences span {
@@ -6230,42 +6229,38 @@ header .project-dropdown .icon-arrow-down {
   font-size: 18px;
 }
 .chart {
+  background: #f4f5f5;
+  margin: 0 0 30px;
+  border-radius: 7px;
 }
-
 figure {
   height: 140px;
   margin: 0 0 30px;
   border-radius: 7px;
 }
-
 .axis path,
 .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
-
 .bar {
-  fill: orange;
+  fill: #dfe2e4;
 }
-
 .bar:hover {
-  fill: orangered ;
+  fill: #f63d09;
 }
-
 .x.axis path {
   display: none;
 }
-
 .d3-tip {
   line-height: 1;
   font-weight: bold;
   padding: 12px;
-  background: rgba(0, 0, 0, 0.8);
+  background: #4c5459;
   color: #fff;
   border-radius: 2px;
 }
-
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
   box-sizing: border-box;
@@ -6273,12 +6268,11 @@ figure {
   font-size: 10px;
   width: 100%;
   line-height: 1;
-  color: rgba(0, 0, 0, 0.8);
+  color: #4c5459;
   content: "\25BC";
   position: absolute;
   text-align: center;
 }
-
 /* Style northward tooltips differently */
 .d3-tip.n:after {
   margin: -1px 0 0 0;
