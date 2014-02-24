@@ -18,10 +18,12 @@ define({
     },
     paths: {
         'App': 'application',
-        'models': 'models',
-        'views': 'views',
+        'helpers': 'helpers',
         'controllers': 'controllers',
+        'components': 'components',
+        'models': 'models',
         'templates': 'templates',
+        'views': 'views',
         /*libs*/
         'd3': '../vendor/d3/d3',
         'ember': '../vendor/ember/ember',
