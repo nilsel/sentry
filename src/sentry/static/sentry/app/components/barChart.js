@@ -69,7 +69,7 @@ define([
                     .attr("class", "bar")
                     .attr("x", X)
                     .attr("y", Y)
-                    .attr("width", function(d) { return (width / data.length) - 2; })
+                    .attr("width", function(d) { return (width / data.length) - 1; })
                     .attr("height", function(d) { return height - yScale(d[1]); })
                     .on('mouseover', tip.show)
                     .on('mouseout', tip.hide);
