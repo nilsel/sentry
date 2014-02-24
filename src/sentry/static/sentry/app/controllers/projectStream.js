@@ -3,10 +3,9 @@ define([
     "ehbs!team/project/index",
     "ehbs!team/project/settings",
     "ehbs!team/project/_project-nav"
-], function(Ember) {
-	'use strict';
+], function(Ember, GroupModel) {
+    'use strict';
 
-    return Ember.Controller.extend({
-        showProjectTabs: true
+    return Ember.ArrayController.extend({
     });
 });

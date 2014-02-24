@@ -1,5 +1,5 @@
 define(["ember"], function(Ember) {
-	'use strict';
+    'use strict';
 
     return Ember.Route.extend({
         beforeModel: function() {
@@ -7,3 +7,5 @@ define(["ember"], function(Ember) {
         }
     });
 });
+
+
