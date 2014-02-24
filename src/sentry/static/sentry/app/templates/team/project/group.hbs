@@ -16,10 +16,10 @@
               </ul>
             </div>
         </div>
-        <div class="count">209</div>
+        <div class="count">{{count}}</div>
         <div class="details">
-            <h3>{{#link-to 'team.project.group' }}sentry.tasks.email in process_inbound_email{{/link-to}}</h3>
-            <p class="message">Inbound email from unknown address: kunal.kukreja@joshworkz.com</p>
+            <h3>{{title}}</h3>
+            <p class="message">{{culprit}}</p>
             <div class="meta">
                 <time>3 days ago</time>
                 <a href="note-count">3 notes</a>
@@ -41,7 +41,7 @@
 </ul>
 <div class="row">
     <div class="col-sm-9">
-    {{bar-chart width="100%" height=140 data=barChartData}}
+    {{bar-chart width="100%" height=140 data=historicalData}}
     <div class="box">
             <div class="box-header">
                 <h4>Timeline</h4>

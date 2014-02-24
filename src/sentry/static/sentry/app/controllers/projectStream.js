@@ -6,6 +6,5 @@ define([
 ], function(Ember, GroupModel) {
     'use strict';
 
-    return Ember.ArrayController.extend({
-    });
+    return Ember.ArrayController.extend();
 });

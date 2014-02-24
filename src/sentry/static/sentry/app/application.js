@@ -6,13 +6,14 @@ define([
     "controllers/groupDetails",
     "components/barChart",
     "routes/projectStream",
+    "routes/groupDetails",
     "router",
     "store",
 
     "ember-selectize",
     "ember-bootstrap/bs-core.max"
 ], function(GroupModel, IndexRoute, ApplicationController, TeamProjectIndexController, TeamProjectGroupController, BarChartComponent,
-            TeamProjectIndexRoute, Router, Store){
+            TeamProjectIndexRoute, TeamProjectGroupRoute, Router, Store){
     'use strict';
 
     var App = {
@@ -25,6 +26,7 @@ define([
         // Routes
         IndexRoute: IndexRoute,
         TeamProjectIndexRoute: TeamProjectIndexRoute,
+        TeamProjectGroupRoute: TeamProjectGroupRoute,
 
         // Views
         // ApplicationView: ApplicationView,
