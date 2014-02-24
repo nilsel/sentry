@@ -1,28 +1,36 @@
 define([
     "models/group",
     "routes/index",
-    "views/application",
-    "views/project_stream",
-    "views/team_group",
+    "controllers/application",
+    "controllers/projectStream",
+    "controllers/groupDetails",
+    "components/barChart",
     "router",
 
-    "ember-selectize"
-], function(GroupModel, IndexRoute, ApplicationView, TeamProjectIndexView, TeamProjectGroupView, Router){
+    "ember-selectize",
+    "ember-bootstrap/bs-core.max"
+], function(GroupModel, IndexRoute, ApplicationController, TeamProjectIndexController, TeamProjectGroupController, BarChartComponent, Router){
+    'use strict';
+
     var App = {
         // Models
         GroupModel: GroupModel,
+
+        // Components
+        BarChartComponent: BarChartComponent,
 
         // Routes
         IndexRoute: IndexRoute,
 
         // Views
-        ApplicationView: ApplicationView,
-        TeamProjectIndexView: TeamProjectIndexView,
-        TeamProjectGroupView: TeamProjectGroupView,
+        // ApplicationView: ApplicationView,
+        // TeamProjectIndexView: TeamProjectIndexView,
+        // TeamProjectGroupView: TeamProjectGroupView,
 
         // Controllers
-        // ApplicationController: ApplicationController,
-       //  TeamProjectController: TeamProjectController,
+        ApplicationController: ApplicationController,
+        TeamProjectIndexController: TeamProjectIndexController,
+        TeamProjectGroupController: TeamProjectGroupController,
 
         // Etc
         Router: Router

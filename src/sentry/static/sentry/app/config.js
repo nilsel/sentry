@@ -10,22 +10,29 @@ define({
             exports: 'DS'
         },
         'ember-selectize': {
-            deps: ['ember', 'selectize'],
+            deps: ['ember', 'selectize']
+        },
+        'ember-bootstrap/bs-core.max': {
+            deps: ['ember', 'jquery']
         }
     },
     paths: {
         'App': 'application',
-        'models': 'models',
-        'views': 'views',
+        'helpers': 'helpers',
         'controllers': 'controllers',
+        'components': 'components',
+        'models': 'models',
         'templates': 'templates',
+        'views': 'views',
         /*libs*/
-        'jquery': '../vendor/jquery/jquery',
-        'handlebars': '../vendor/handlebars/handlebars',
+        'd3': '../vendor/d3/d3',
         'ember': '../vendor/ember/ember',
+        'ember-bootstrap': '../vendor/ember-addons.bs_for_ember/dist/js',
         'ember-data': '../vendor/ember-data/ember-data',
         'ember-selectize': '../vendor/ember-selectize/ember.selectize',
+        'handlebars': '../vendor/handlebars/handlebars',
         'google-code-prettify': '../vendor/google-code-prettify/src/prettify',
+        'jquery': '../vendor/jquery/jquery',
         'microplugin': '../vendor/microplugin/src/microplugin',
         'selectize': '../vendor/selectize/dist/js/selectize',
         'sifter': '../vendor/sifter/sifter',
