@@ -5,6 +5,6 @@ define([
     'use strict';
 
     return Ember.View.extend({
-      templateName: "eventActions/exception"
+        templateName: "eventActions/exception"
     });
 });
