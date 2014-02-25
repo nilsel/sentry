@@ -1,10 +1,10 @@
 define([
     "ember",
-    "ehbs!eventActions/_default"
+    "ehbs!eventActions/default"
 ], function(Ember) {
     'use strict';
 
     return Ember.View.extend({
-      templateName: "eventActions/_default"
+      templateName: "eventActions/default"
     });
 });

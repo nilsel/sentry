@@ -1,10 +1,10 @@
 define([
     "ember",
-    "ehbs!eventActions/_httpRequest"
+    "ehbs!eventActions/httpRequest"
 ], function(Ember) {
     'use strict';
 
     return Ember.View.extend({
-      templateName: "eventActions/_httpRequest"
+      templateName: "eventActions/httpRequest"
     });
 });
