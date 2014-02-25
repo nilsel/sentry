@@ -86,56 +86,6 @@ define(["exports"], function(exports) {
     }
   }
 
-  function getDeps(ast, parentRequire) {
-    var deps = ast.statements.reduce(function(deps, statement) {
-      var helperName = statement.id && statement.id.string;
-      var dep, parts, namespace, arg, nextStatement;
-
-      if (statement.isHelper) {
-        parts = getNamespaceAndNameFromStatement(statement);
-        namespace = parts[0];
-        arg = parts[1];
-
-        if (!shouldIgnore(helperName, namespace)) {
-          if (helperName == "view") {
-            path = paths.views;
-            ext = ".js";
-          } else if (helperName == "partial" || helperName == "render") {
-            path = "ehbs!";
-            ext = "";
-          } else if (helperName == "control") {
-            path = paths.controllers;
-            ext = ".js";
-          } else {
-            path = paths.helpers;
-            arg = statement.id.string;
-            ext = ".js";
-          }
-
-          arg = enforceCase(arg);
-
-          deps.push(parentRequire.toUrl(path + arg + ext));
-        }
-      }
-
-      nextStatement = Ember.get(statement, "program.statements");
-      if (nextStatement) {
-        deps.push.apply(deps, getDeps(statement.program, parentRequire));
-      }
-
-      nextStatement = Ember.get(statement, "program.inverse.statements");
-      if (nextStatement) {
-        deps.push.apply(deps, getDeps(statement.program.inverse, parentRequire));
-      }
-
-      return deps;
-    }, []);
-
-    return deps.filter(function(dep) {
-      return !(parentRequire.defined(dep) || parentRequire.specified(dep));
-    });
-  }
-
   var compileOptions = {
     data: true,
     stringParams: true
@@ -165,18 +115,13 @@ define(["exports"], function(exports) {
       classify = Ember.String.classify;
 
       var ast = Ember.Handlebars.parse(template);
-      var deps = getDeps(ast, parentRequire);
 
       // This stuff is taken right from Ember.Handlebars.compile()
       var environment = new Ember.Handlebars.Compiler().compile(ast, compileOptions);
       var templateSpec = new Ember.Handlebars.JavaScriptCompiler().compile(environment, compileOptions, undefined, true);
       Ember.TEMPLATES[name] = Ember.Handlebars.template(templateSpec);
 
-      if (deps.length) {
-        parentRequire(deps, onload);
-      } else {
-        onload();
-      }
+      onload();
 
     });
   };
