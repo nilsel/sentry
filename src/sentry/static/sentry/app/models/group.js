@@ -11,6 +11,7 @@ define(["ember-data"], function(DS){
         count: DS.attr('number'),
         firstSeen: DS.attr('date'),
         lastSeen: DS.attr('date'),
+        actions: DS.attr(),
         historicalData: DS.attr()
     });
 

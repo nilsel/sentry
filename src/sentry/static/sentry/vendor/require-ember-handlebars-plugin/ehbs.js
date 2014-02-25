@@ -177,6 +177,7 @@ define(["exports"], function(exports) {
       } else {
         onload();
       }
+
     });
   };
 

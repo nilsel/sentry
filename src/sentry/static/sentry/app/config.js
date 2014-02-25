@@ -18,12 +18,6 @@ define({
     },
     paths: {
         'App': 'application',
-        'helpers': 'helpers',
-        'controllers': 'controllers',
-        'components': 'components',
-        'models': 'models',
-        'templates': 'templates',
-        'views': 'views',
         /*libs*/
         'd3': '../vendor/d3/d3',
         'd3-tip': '../vendor/d3-tip/index',
@@ -39,16 +33,11 @@ define({
         'sifter': '../vendor/sifter/sifter',
         /*requirejs-plugins*/
         'text': '../vendor/requirejs-plugins/lib/text',
-        'ehbs': '../vendor/require-ember-handlebars-plugin/ehbs',
-        'domReady': '../vendor/requirejs-plugins/lib/domReady'
+        'ehbs': '../vendor/require-ember-handlebars-plugin/ehbs'
     },
     ehbs: {
         paths: {
-            casing: "camel",
-            templates: "templates",
-            views: "views",
-            controllers: "controllers",
-            helpers: "helpers"
+            casing: "camel"
         }
     }
 });

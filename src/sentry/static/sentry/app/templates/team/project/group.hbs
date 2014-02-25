@@ -21,7 +21,7 @@
             <h3>{{title}}</h3>
             <p class="message">{{culprit}}</p>
             <div class="meta">
-                <time>3 days ago</time>
+                <time>{{lastSeen}}</time>
                 <a href="note-count">3 notes</a>
             </div>
         </div>
@@ -48,143 +48,11 @@
             </div>
             <div class="box-content">
                 <ul class="timeline">
-                    <li class="timeline-item console">
-                        <div class="row">
-                            <div class="col-sm-7 description">
-                                <h5>Console</h5>
-                                <p><strong>Severity</strong> info</p>
-                                <p><strong>Message</strong> initialize page layout</p>
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="graph">
-                                    <div class="scale">
-                                        <div class="scale-line scale-line-0">
-                                            <span class="scale-label">0s</span>
-                                        </div>
-                                        <div class="scale-line scale-line-25">
-                                            <span class="scale-label">30s</span>
-                                        </div>
-                                        <div class="scale-line scale-line-50">
-                                            <span class="scale-label">60s</span>
-                                        </div>
-                                        <div class="scale-line scale-line-75">
-                                            <span class="scale-label">90s</span>
-                                        </div>
-                                    </div>
-                                    <div class="blip-container" style="margin-left: 10%;">
-                                        <div class="blip"></div>
-                                        <div class="blip-label">10s</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="timeline-item user-action">
-                        <div class="row">
-                            <div class="col-sm-7 description">
-                                <h5>User click</h5>
-                                <p><strong>element</strong> <code>button.sup</code></p>
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="graph">
-                                    <div class="scale">
-                                        <div class="scale-line scale-line-0">
-                                            <span class="scale-label"></span>
-                                        </div>
-                                        <div class="scale-line scale-line-25">
-                                            <span class="scale-label"></span>
-                                        </div>
-                                        <div class="scale-line scale-line-50">
-                                            <span class="scale-label"></span>
-                                        </div>
-                                        <div class="scale-line scale-line-75">
-                                            <span class="scale-label"></span>
-                                        </div>
-                                    </div>
-                                    <div class="blip-container" style="margin-left: 25%">
-                                        <div class="blip"></div>
-                                        <div class="blip-label">30s</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="timeline-item ajax">
-                        <div class="row">
-                            <div class="col-sm-7 description">
-                                <h5>Ajax GET</h5>
-                                <p><strong>element</strong> <code>button.sup</code></p>
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="graph">
-                                    <div class="scale">
-                                        <div class="scale-line scale-line-0">
-                                            <span class="scale-label"></span>
-                                        </div>
-                                        <div class="scale-line scale-line-25">
-                                            <span class="scale-label"></span>
-                                        </div>
-                                        <div class="scale-line scale-line-50">
-                                            <span class="scale-label"></span>
-                                        </div>
-                                        <div class="scale-line scale-line-75">
-                                            <span class="scale-label"></span>
-                                        </div>
-                                    </div>
-                                    <div class="blip-container" style="margin-left: 60%">
-                                        <div class="blip"></div>
-                                        <div class="blip-label">72s</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="context hide">
-
-                                <pre>
-App.ApplicationRoute = Ember.Route.extend({
-actions: {
-openModal: function(modalName) {
-return this.render(modalName, {
-into: 'application',
-outlet: 'modal'
-});
-}
-}
-});
-                                </pre>
-
-                        </div>
-                    </li>
-                    <li class="timeline-item error">
-                        <div class="row">
-                            <div class="col-sm-7 description">
-                                <h5>Error</h5>
-                                <p><strong>element</strong> <code>button.sup</code></p>
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="graph">
-                                    <div class="scale">
-                                        <div class="scale-line scale-line-0">
-                                            <span class="scale-label"></span>
-                                        </div>
-                                        <div class="scale-line scale-line-25">
-                                            <span class="scale-label"></span>
-                                        </div>
-                                        <div class="scale-line scale-line-50">
-                                            <span class="scale-label"></span>
-                                        </div>
-                                        <div class="scale-line scale-line-75">
-                                            <span class="scale-label"></span>
-                                        </div>
-                                    </div>
-                                    <div class="blip-container" style="margin-left: 90%;">
-                                        <div class="blip"></div>
-                                        <div class="blip-label">110s</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                    {{#each action in actions}}
+                        <li class="timeline-item">
+                            {{render-event-action action}}
+                        </li>
+                    {{/each}}
                 </ul>
             </div>
         </div>
