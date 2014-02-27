@@ -1,5 +1,6 @@
 define([
     "models/group",
+    "models/project",
     "routes/index",
     "controllers/application",
     "controllers/projectStream",
@@ -16,7 +17,8 @@ define([
 
     "ember-selectize",
     "ember-bootstrap/bs-core.max"
-], function(GroupModel, IndexRoute, ApplicationController, TeamProjectIndexController,
+], function(ProjectModel,
+            GroupModel, IndexRoute, ApplicationController, TeamProjectIndexController,
             TeamProjectGroupController, BarChartComponent,
             FormatNumberHelper, RenderEventActionHelper,
             TeamProjectExploreIndexRoute, TeamProjectExploreItemRoute,
@@ -25,6 +27,7 @@ define([
 
     var App = {
         // Models
+        ProjectModel: ProjectModel,
         GroupModel: GroupModel,
 
         // Components
