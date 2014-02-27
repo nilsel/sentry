@@ -1,4 +1,7 @@
-define(["ember"], function(Ember) {
+define([
+	"ember",
+	"ehbs!team/project/group"
+], function(Ember) {
     'use strict';
 
     return Ember.Route.extend({
