@@ -7,6 +7,7 @@ define([
     "components/barChart",
     "helpers/formatNumber",
     "helpers/renderEventAction",
+    "routes/projectExplore",
     "routes/projectStream",
     "routes/groupDetails",
     "router",
@@ -14,8 +15,10 @@ define([
 
     "ember-selectize",
     "ember-bootstrap/bs-core.max"
-], function(GroupModel, IndexRoute, ApplicationController, TeamProjectIndexController, TeamProjectGroupController, BarChartComponent,
-            FormatNumberHelper, RenderEventActionHelper, TeamProjectIndexRoute, TeamProjectGroupRoute, Router, Store){
+], function(GroupModel, IndexRoute, ApplicationController, TeamProjectIndexController,
+            TeamProjectGroupController, BarChartComponent,
+            FormatNumberHelper, RenderEventActionHelper,
+            TeamProjectExploreIndexRoute, TeamProjectIndexRoute, TeamProjectGroupRoute, Router, Store){
     'use strict';
 
     var App = {
@@ -31,6 +34,7 @@ define([
 
         // Routes
         IndexRoute: IndexRoute,
+        TeamProjectExploreIndexRoute: TeamProjectExploreIndexRoute,
         TeamProjectIndexRoute: TeamProjectIndexRoute,
         TeamProjectGroupRoute: TeamProjectGroupRoute,
 
