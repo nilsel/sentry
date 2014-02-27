@@ -17,18 +17,27 @@ define([
 
     "ember-selectize",
     "ember-bootstrap/bs-core.max"
-], function(ProjectModel,
-            GroupModel, IndexRoute, ApplicationController, TeamProjectIndexController,
-            TeamProjectGroupController, BarChartComponent,
-            FormatNumberHelper, RenderEventActionHelper,
-            TeamProjectExploreIndexRoute, TeamProjectExploreItemRoute,
-            TeamProjectIndexRoute, TeamProjectGroupRoute, Router, Store){
+], function(GroupModel,
+            ProjectModel,
+            IndexRoute,
+            ApplicationController,
+            TeamProjectIndexController,
+            TeamProjectGroupController,
+            BarChartComponent,
+            FormatNumberHelper,
+            RenderEventActionHelper,
+            TeamProjectExploreIndexRoute,
+            TeamProjectExploreItemRoute,
+            TeamProjectIndexRoute,
+            TeamProjectGroupRoute,
+            Router,
+            Store){
     'use strict';
 
     var App = {
         // Models
-        ProjectModel: ProjectModel,
         GroupModel: GroupModel,
+        ProjectModel: ProjectModel,
 
         // Components
         BarChartComponent: BarChartComponent,
@@ -52,7 +61,7 @@ define([
         // Controllers
         ApplicationController: ApplicationController,
         TeamProjectIndexController: TeamProjectIndexController,
-        TeamProjectGroupController: TeamProjectGroupController,
+        // TeamProjectGroupController: TeamProjectGroupController,
 
         // Etc
         Router: Router,
