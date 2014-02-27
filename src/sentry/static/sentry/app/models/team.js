@@ -1,17 +1,17 @@
 define(["ember-data"], function(DS){
     'use strict';
 
-    var ProjectModel = DS.Model.extend({
+    var TeamModel = DS.Model.extend({
         name: DS.attr('string'),
         slug: DS.attr('string')
     });
 
     // TODO: should be moved out into some dev-only utility?
-    ProjectModel.FIXTURES = [{
+    TeamModel.FIXTURES = [{
       id: 1,
-      name: "Backend",
-      slug: "backend"
+      name: "Sentry",
+      slug: "sentry"
     }];
 
-    return ProjectModel;
+    return TeamModel;
 });

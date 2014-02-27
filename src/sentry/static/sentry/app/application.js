@@ -1,10 +1,10 @@
 define([
     "models/group",
     "models/project",
+    "models/team",
     "routes/index",
     "controllers/application",
     "controllers/projectStream",
-    "controllers/groupDetails",
     "components/barChart",
     "helpers/formatNumber",
     "helpers/renderEventAction",
@@ -19,10 +19,10 @@ define([
     "ember-bootstrap/bs-core.max"
 ], function(GroupModel,
             ProjectModel,
+            TeamModel,
             IndexRoute,
             ApplicationController,
             TeamProjectIndexController,
-            TeamProjectGroupController,
             BarChartComponent,
             FormatNumberHelper,
             RenderEventActionHelper,
@@ -38,6 +38,7 @@ define([
         // Models
         GroupModel: GroupModel,
         ProjectModel: ProjectModel,
+        TeamModel: TeamModel,
 
         // Components
         BarChartComponent: BarChartComponent,
