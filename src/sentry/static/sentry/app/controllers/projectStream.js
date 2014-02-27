@@ -3,7 +3,7 @@ define([
     "ehbs!team/project/index",
     "ehbs!team/project/settings",
     "ehbs!team/project/_project-nav"
-], function(Ember, GroupModel) {
+], function(Ember) {
     'use strict';
 
     return Ember.ArrayController.extend({
