@@ -8,6 +8,7 @@ define([
     "helpers/formatNumber",
     "helpers/renderEventAction",
     "routes/projectExplore",
+    "routes/projectExploreItem",
     "routes/projectStream",
     "routes/groupDetails",
     "router",
@@ -18,7 +19,8 @@ define([
 ], function(GroupModel, IndexRoute, ApplicationController, TeamProjectIndexController,
             TeamProjectGroupController, BarChartComponent,
             FormatNumberHelper, RenderEventActionHelper,
-            TeamProjectExploreIndexRoute, TeamProjectIndexRoute, TeamProjectGroupRoute, Router, Store){
+            TeamProjectExploreIndexRoute, TeamProjectExploreItemRoute,
+            TeamProjectIndexRoute, TeamProjectGroupRoute, Router, Store){
     'use strict';
 
     var App = {
@@ -35,6 +37,7 @@ define([
         // Routes
         IndexRoute: IndexRoute,
         TeamProjectExploreIndexRoute: TeamProjectExploreIndexRoute,
+        TeamProjectExploreItemRoute: TeamProjectExploreItemRoute,
         TeamProjectIndexRoute: TeamProjectIndexRoute,
         TeamProjectGroupRoute: TeamProjectGroupRoute,
 
