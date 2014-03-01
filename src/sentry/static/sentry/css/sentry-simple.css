@@ -5747,6 +5747,7 @@ td.visible-print {
   font-size: 48px !important;
   position: absolute;
   left: -60px;
+  top: 1px;
 }
 .btn-sm .icon-arrow-down,
 .btn-sm .icon-arrow-right,
@@ -5985,17 +5986,64 @@ header .project-dropdown .icon-arrow-down {
   display: inline-block;
   padding-top: 6px;
 }
-.event-detail {
-  margin-bottom: 22px;
+.group-detail {
+  margin-bottom: 24px;
 }
-.event-detail h3 {
+.group-detail h3 {
+  font-size: 22px;
   letter-spacing: -0.25px;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
-.event-detail .count {
+.group-detail .count {
+  color: #4c5459;
   font-size: 22px;
   font-weight: 500;
   display: block;
+}
+.group-detail .occurrences,
+.group-detail .users {
+  color: #949ea4;
+}
+.group-detail .meta {
+  margin: 0 0 12px;
+  color: #949ea4;
+}
+.group-detail .group-actions:before,
+.group-detail .group-actions:after {
+  content: " ";
+  display: table;
+}
+.group-detail .group-actions:after {
+  clear: both;
+}
+.group-detail .group-actions:before,
+.group-detail .group-actions:after {
+  content: " ";
+  display: table;
+}
+.group-detail .group-actions:after {
+  clear: both;
+}
+.group-detail .seen-by {
+  color: #949ea4;
+  float: right;
+}
+.group-detail .seen-by ul {
+  padding-left: 0;
+  list-style: none;
+}
+.group-detail .seen-by ul li:first-child {
+  padding-right: 4px;
+}
+.group-detail .seen-by ul li {
+  float: left;
+  margin-left: 4px;
+  line-height: 32px;
+}
+.group-detail .seen-by ul li img {
+  border-radius: 3px;
+  width: 30px;
+  height: 30px;
 }
 .timeline {
   padding-left: 0;

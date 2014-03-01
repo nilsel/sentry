@@ -1,12 +1,12 @@
 {{#link-to 'team.project'}}<span class="icon-arrow-left back-button"></span>{{/link-to}}
-<div class="event-detail">
+<div class="group-detail">
   <div class="row">
       <div class="col-xs-9 details">
-          <h3>{{title}}</h3>
-          <div class="meta">
-              <time>3 days ago</time> &middot;
-              <span class="message">{{culprit}}</span>
-          </div>
+        <h3>{{title}}</h3>
+        <div class="meta">
+            <time>3 days ago</time> &middot;
+            <span class="message">{{culprit}}</span>
+        </div>
       </div>
       <div class="col-xs-3 occurrences">
         <div class="row">
@@ -14,6 +14,26 @@
           <div class="col-xs-6 users align-right"><span class="count">209</span> users</div>
         </div>
       </div>
+  </div>
+  <div class="group-actions">
+    <div class="seen-by">
+      <ul>
+        <li>Seen by</li>
+        <li><a href="#"><img src="http://github.com/ckj.png" /></a></li>
+        <li><a href="#"><img src="http://github.com/dcramer.png" /></a></li>
+        <li><a href="#"><img src="http://github.com/mattrobenolt.png" /></a></li>
+      </ul>
+    </div>
+    <div class="btn-group">
+      <a href="#" class="btn btn-default btn-sm"><span class="icon-checkmark"></span></a>
+      <a href="#" class="btn btn-default btn-sm"><span class="icon-bookmark"></span></a>
+    </div>
+    <div class="btn-group">
+      <a href="#" class="btn btn-default btn-sm"><span class="icon-trash"></span></a>
+    </div>
+    <div class="btn-group">
+      <a href="#" class="btn btn-default btn-sm">More <span class="icon-arrow-down"></span></a>
+    </div>
   </div>
 </div>
 <div class="pull-right">

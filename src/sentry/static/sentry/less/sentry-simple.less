@@ -64,6 +64,7 @@
   font-size: 48px !important;
   position: absolute;
   left: -60px;
+  top: 1px;
 }
 
 .btn-sm {
@@ -308,17 +309,53 @@ header {
   }
 }
 
-.event-detail {
-  margin-bottom: 22px;
+.group-detail {
+  margin-bottom: 24px;
   h3 {
+    font-size: 22px;
     letter-spacing: -0.25px;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
   }
 
   .count {
+    color: @gray-dark;
     font-size: 22px;
     font-weight: 500;
     display: block;
+  }
+
+  .occurrences, .users {
+    color: #949ea4;
+  }
+
+  .meta {
+    margin: 0 0 12px;
+    color: #949ea4;
+  }
+
+  .group-actions {
+    .clearfix;
+  }
+
+  .seen-by {
+    color: #949ea4;
+    float: right;
+    ul {
+      .list-unstyled;
+      li:first-child {
+        padding-right: 4px;
+      }
+      li {
+        float: left;
+        margin-left: 4px;
+        line-height: 32px;
+        img {
+          border-radius: 3px;
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
   }
 }
 
