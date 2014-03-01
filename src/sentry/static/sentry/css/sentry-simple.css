@@ -5927,6 +5927,7 @@ header .project-dropdown .icon-arrow-down {
 .events .details h3 {
   font-size: 16px;
   line-height: 1.2;
+  letter-spacing: -0.25;
   margin: 0 0 3px;
 }
 .events .details h3 a {
@@ -5983,6 +5984,18 @@ header .project-dropdown .icon-arrow-down {
 .events .event-header strong {
   display: inline-block;
   padding-top: 6px;
+}
+.event-detail {
+  margin-bottom: 22px;
+}
+.event-detail h3 {
+  letter-spacing: -0.25px;
+  margin-bottom: 8px;
+}
+.event-detail .count {
+  font-size: 22px;
+  font-weight: 500;
+  display: block;
 }
 .timeline {
   padding-left: 0;
@@ -6238,7 +6251,7 @@ header .project-dropdown .icon-arrow-down {
 }
 figure {
   max-width: 100%;
-  height: 140px;
+  height: 120px;
   margin: 0 0 30px;
   border-radius: 7px;
 }
