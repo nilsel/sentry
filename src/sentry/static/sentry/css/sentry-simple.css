@@ -6024,23 +6024,23 @@ header .project-dropdown .icon-arrow-down {
 .group-detail .group-actions:after {
   clear: both;
 }
-.group-detail .seen-by {
+.seen-by {
   color: #949ea4;
   float: right;
 }
-.group-detail .seen-by ul {
+.seen-by ul {
   padding-left: 0;
   list-style: none;
 }
-.group-detail .seen-by ul li:first-child {
+.seen-by ul li:first-child {
   padding-right: 4px;
 }
-.group-detail .seen-by ul li {
+.seen-by ul li {
   float: left;
   margin-left: 4px;
   line-height: 32px;
 }
-.group-detail .seen-by ul li img {
+.seen-by ul li img {
   border-radius: 3px;
   width: 30px;
   height: 30px;
