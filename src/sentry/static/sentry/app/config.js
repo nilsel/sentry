@@ -27,7 +27,7 @@ define({
         'ember-selectize': '../vendor/ember-selectize/ember.selectize',
         'handlebars': '../vendor/handlebars/handlebars',
         'google-code-prettify': '../vendor/google-code-prettify/src/prettify',
-        'jquery': '../vendor/jquery/jquery',
+        'jquery': '../vendor/jquery/jquery.min',
         'microplugin': '../vendor/microplugin/src/microplugin',
         'selectize': '../vendor/selectize/dist/js/selectize',
         'sifter': '../vendor/sifter/sifter',
