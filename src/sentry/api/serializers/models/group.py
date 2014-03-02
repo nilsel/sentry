@@ -1,5 +1,3 @@
-import time
-
 from collections import defaultdict
 from django.core.urlresolvers import reverse
 from django.utils.html import escape
@@ -102,24 +100,22 @@ class GroupSerializer(Serializer):
             'count': str(obj.times_seen),
             'title': escape(obj.title),
             'message': escape(obj.message_short),
-            'level': obj.level,
-            'levelName': escape(obj.get_level_display()),
-            'logger': escape(obj.logger),
             'permalink': absolute_uri(reverse('sentry-group', args=[obj.team.slug, obj.project.slug, obj.id])),
-            'versions': list(obj.get_version() or []),
             'firstSeen': self.localize_datetime(obj.first_seen, request=request),
             'lastSeen': self.localize_datetime(obj.last_seen, request=request),
             'timeSpent': obj.avg_time_spent,
             'canResolve': request and request.user.is_authenticated(),
-            'status': status_label,
+            'status': {
+                'id': status,
+                'name': status_label,
+            },
             'isResolved': obj.get_status() == STATUS_RESOLVED,
             'isPublic': obj.is_public,
-            'score': getattr(obj, 'sort_value', 0),
+            # 'score': getattr(obj, 'sort_value', 0),
             'project': {
                 'name': obj.project.name,
                 'slug': obj.project.slug,
             },
-            'version': time.time(),
         }
         if hasattr(obj, 'is_bookmarked'):
             d['isBookmarked'] = obj.is_bookmarked

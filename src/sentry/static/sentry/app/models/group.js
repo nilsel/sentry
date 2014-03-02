@@ -7,8 +7,10 @@ define(["ember-data"], function(DS){
 
     var GroupModel = DS.Model.extend({
         title: DS.attr('string'),
+        message: DS.attr('string'),
         culprit: DS.attr('string'),
         count: DS.attr('number'),
+        timeSpent: DS.attr('number'),
         firstSeen: DS.attr('date'),
         lastSeen: DS.attr('date'),
         actions: DS.attr(),
