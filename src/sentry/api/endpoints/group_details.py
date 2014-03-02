@@ -2,11 +2,11 @@ from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 
-from sentry.api.base import BaseView
+from sentry.api.base import Endpoint
+from sentry.api.serializers import serialize
 from sentry.constants import STATUS_RESOLVED, STATUS_MUTED, STATUS_UNRESOLVED
 from sentry.models import Group, Activity
 from sentry.web.decorators import has_access
-from sentry.utils.javascript import transform
 
 from rest_framework import serializers, status
 from rest_framework.response import Response
@@ -50,7 +50,7 @@ class GroupSerializer(serializers.ModelSerializer):
         read_only_fields = ('id', 'times_seen', 'last_seen', 'first_seen', 'resolved_at', 'active_at')
 
 
-class GroupDetailsView(BaseView):
+class GroupDetailsEndpoint(Endpoint):
     @method_decorator(has_access)
     def get(self, request, team, project, group_id):
         group = Group.objects.get(
@@ -96,4 +96,4 @@ class GroupDetailsView(BaseView):
 
         serializer.save()
 
-        return Response(transform(group, request))
+        return Response(serialize(group, request))

@@ -6,7 +6,7 @@ from .authentication import KeyAuthentication
 from .permissions import HasProjectPermission
 
 
-class BaseView(APIView):
+class Endpoint(APIView):
     authentication_classes = (KeyAuthentication, SessionAuthentication)
     permission_classes = (HasProjectPermission,)
     parser_classes = (JSONParser,)
