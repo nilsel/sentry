@@ -19,7 +19,7 @@ define({
     paths: {
         'App': 'application',
         /*libs*/
-        'd3': '../vendor/d3/d3',
+        'd3': '../vendor/d3/d3.min',
         'd3-tip': '../vendor/d3-tip/index',
         'ember': '../vendor/ember/ember.min',
         'ember-bootstrap': '../vendor/ember-addons.bs_for_ember/dist/js',
